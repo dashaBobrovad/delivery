@@ -1,0 +1,25 @@
+@import "../../scss/variables";
+
+.icon,
+[class*="symbol-"] {
+  display: inline-block;
+  fill: $white;
+  stroke: $white;
+  stroke-width: 0;
+  width: 1.5em;
+  height: 1.5em;
+  font-size: 16px;
+}
+
+.icon{
+  &_logo {
+    fill: $black;
+    stroke: $black;
+  }
+  &_basket {
+    fill: none;
+  }
+}
+
+.icon_primary {
+}
