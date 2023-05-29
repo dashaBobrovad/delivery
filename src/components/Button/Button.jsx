@@ -1,3 +1,3 @@
 function Button(params) {
-    return
+  return;
 }

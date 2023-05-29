@@ -1,5 +1,6 @@
 import Icon from "components/Icon/Icon";
 import s from "./Header.module.scss";
+import { NavLink } from "react-router-dom";
 
 function Header(params) {
   return (
@@ -14,12 +15,12 @@ function Header(params) {
         </div>
         <div>
           {/* TODO: NavLink */}
-          <a href="/cart.html" className="button button--cart">
+          <NavLink to="/basket" className="button button--cart">
             <span>520 ₽</span>
             <div className="button__delimiter"></div>
             <Icon icon="basket" />
             <span>3</span>
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>

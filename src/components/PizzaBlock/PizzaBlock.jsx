@@ -1,4 +1,4 @@
-import s from './PizzaBlock.module.scss';
+import s from "./PizzaBlock.module.scss";
 
 function PizzaBlock({ props }) {
   const { title, img, types, sizes, price } = props;
@@ -10,14 +10,20 @@ function PizzaBlock({ props }) {
       <div className={s.selector}>
         <ul className={s.list}>
           {types.map((type, index) => (
-            <li className={`${s.item} ${index === 0 ? s.item_active : ''}`} key={index}>
+            <li
+              className={`${s.item} ${index === 0 ? s.item_active : ""}`}
+              key={index}
+            >
               {type}
             </li>
           ))}
         </ul>
         <ul className={s.list}>
           {sizes.map((size, index) => (
-            <li className={`${s.item} ${index === 0 ? s.item_active : ''}`} key={index}>
+            <li
+              className={`${s.item} ${index === 0 ? s.item_active : ""}`}
+              key={index}
+            >
               {size} см.
             </li>
           ))}
