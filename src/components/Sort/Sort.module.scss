@@ -1,4 +1,4 @@
-@import '../../scss/variables';
+@import "../../scss/variables";
 
 .sort {
   position: relative;
@@ -37,21 +37,19 @@
   .list {
     overflow: hidden;
   }
-  
+
   .item {
     padding: 12px 20px;
     cursor: pointer;
-  
+
     &_active,
     &:hover {
       background: rgba(254, 95, 30, 0.05);
     }
-  
+
     &_active {
       font-weight: bold;
       color: $orange;
     }
   }
 }
-
-

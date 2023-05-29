@@ -1,9 +1,22 @@
+import React, { useState } from 'react';
 import s from './Sort.module.scss';
 
-function Sort({ list }) {
+function Sort() {
+  const list = ['популярности', 'цене', 'алфавиту'];
+
+  const [active, setActive] = useState(0);
+
+  const [open, setOpen] = useState(true);
+
+  function onActiveClick(index) {
+    setActive(index);
+    setOpen((prev) => !prev);
+  }
+
   return (
     <div className={s.sort}>
       <div className={s.label}>
+        {/* TODO: use Icon */}
         <svg
           width="10"
           height="6"
@@ -17,22 +30,23 @@ function Sort({ list }) {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span>{list[0]}</span>
+        <span>{list[active]}</span>
       </div>
-      <div className={s.popup}>
-        <ul className={s.list}>
-          {list.map((item, index) => (
-            <li
-              key={index}
-              className={`${s.item} ${
-                index === 0 ? s.item_active : ''
-              }`}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {open && (
+        <div className={s.popup}>
+          <ul className={s.list}>
+            {list.map((item, index) => (
+              <li
+                key={index}
+                className={`${s.item} ${index === active ? s.item_active : ''}`}
+                onClick={() => onActiveClick(index)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
