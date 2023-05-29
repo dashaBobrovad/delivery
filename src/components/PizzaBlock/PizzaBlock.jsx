@@ -1,28 +1,48 @@
+import { useState } from "react";
 import s from "./PizzaBlock.module.scss";
 
 function PizzaBlock({ props }) {
-  const { title, img, types, sizes, price } = props;
+  const { title, imageUrl, types, sizes, price } = props;
+
+  const typesList = ["Тонкое", "толстое"];
+
+  const [activeType, setActiveType] = useState(0);
+  const [activeSize, setActiveSize] = useState(0);
+
+  const changeActiveType = (index) => {
+    setActiveType(index);
+  };
+
+  const changeActiveSize = (index) => {
+    setActiveSize(index);
+  };
 
   return (
     <div className={s.pizza}>
-      <img className={s.image} src={img} alt={title} />
+      <img className={s.image} src={imageUrl} alt={title} />
       <h4 className={s.title}>{title}</h4>
       <div className={s.selector}>
         <ul className={s.list}>
           {types.map((type, index) => (
             <li
-              className={`${s.item} ${index === 0 ? s.item_active : ""}`}
+              className={`${s.item} ${
+                index === activeType ? s.item_active : ""
+              }`}
               key={index}
+              onClick={() => changeActiveType(index)}
             >
-              {type}
+              {typesList[type]}
             </li>
           ))}
         </ul>
         <ul className={s.list}>
           {sizes.map((size, index) => (
             <li
-              className={`${s.item} ${index === 0 ? s.item_active : ""}`}
+              className={`${s.item} ${
+                index === activeSize ? s.item_active : ""
+              }`}
               key={index}
+              onClick={() => changeActiveSize(index)}
             >
               {size} см.
             </li>

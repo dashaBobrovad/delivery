@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import s from "./Categories.module.scss";
 
 function Categories() {
@@ -23,7 +23,9 @@ function Categories() {
         {categories.map((category, index) => (
           <li
             key={index}
-            className={`${s.category} ${index === active ? s.category_active : ""}`}
+            className={`${s.category} ${
+              index === active ? s.category_active : ""
+            }`}
             onClick={() => onActiveClick(index)}
           >
             {category}
