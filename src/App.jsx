@@ -1,17 +1,17 @@
-import { Header, Routing, Sprite } from "components";
-import "./scss/app.scss";
+import { Header, Routing, Sprite } from 'components';
+import './scss/app.scss';
 
 function App() {
   return (
     <div className="wrapper">
       <Sprite />
 
-      <Header />
-
       <div className="content">
-        <div className="container">
+        
+          <Header />
+
           <Routing />
-        </div>
+  
       </div>
     </div>
   );

@@ -1,5 +1,17 @@
+import { BasketEmpty, BasketList } from "components";
+
 function BasketPage(params) {
-  return <div>basket page (+ emptypage/component)</div>;
+  const isEmpty = false;
+  return (
+    <>
+      {isEmpty && (
+        <BasketEmpty />
+      )}
+      {!isEmpty && (
+        <BasketList />
+      )}
+    </>
+  );
 }
 
 export default BasketPage;
