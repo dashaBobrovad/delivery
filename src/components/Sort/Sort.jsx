@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-import s from './Sort.module.scss';
+import React, { useState } from "react";
+import s from "./Sort.module.scss";
 
 function Sort() {
-  const list = ['популярности', 'цене', 'алфавиту'];
+  const list = ["популярности", "цене", "алфавиту"];
 
   const [active, setActive] = useState(0);
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   function onActiveClick(index) {
     setActive(index);
+    setOpen(false);
+  }
+
+  function toggleOpen(params) {
     setOpen((prev) => !prev);
   }
 
   return (
     <div className={s.sort}>
-      <div className={s.label}>
+      <div className={s.label} onClick={toggleOpen}>
         {/* TODO: use Icon */}
         <svg
           width="10"
@@ -38,7 +42,7 @@ function Sort() {
             {list.map((item, index) => (
               <li
                 key={index}
-                className={`${s.item} ${index === active ? s.item_active : ''}`}
+                className={`${s.item} ${index === active ? s.item_active : ""}`}
                 onClick={() => onActiveClick(index)}
               >
                 {item}

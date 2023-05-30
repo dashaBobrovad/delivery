@@ -1,4 +1,4 @@
-import { BasketPage, MainPage } from "pages";
+import { BasketPage, MainPage, NotFoundPage } from "pages";
 import { Route, Routes } from "react-router-dom";
 
 function Routing() {
@@ -6,6 +6,7 @@ function Routing() {
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/basket" element={<BasketPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
