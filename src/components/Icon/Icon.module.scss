@@ -9,6 +9,7 @@
   width: 1.5em;
   height: 1.5em;
   font-size: 16px;
+  stroke-width: 1px;
 }
 
 .icon {
@@ -16,6 +17,7 @@
     fill: $black;
     stroke: $black;
   }
+
   &_basket {
     fill: none;
   }
@@ -24,6 +26,12 @@
 .icon {
   &_black {
     stroke: $black;
+    fill: $black;
+  }
+
+  &_primary{
+    stroke: $orange;
+    fill: $orange;
   }
 }
 

@@ -48,16 +48,16 @@
     transition: all $duration ease-in-out;
   }
 
-  &:hover {
-    svg {
-      path {
-        stroke: darken($color: #b6b6b6, $amount: 50);
-      }
-    }
-    span {
-      color: darken($color: #b6b6b6, $amount: 50);
-    }
-  }
+//   &:hover {
+//     svg {
+//       path {
+//         stroke: darken($color: #b6b6b6, $amount: 50);
+//       }
+//     }
+//     span {
+//       color: darken($color: #b6b6b6, $amount: 50);
+//     }
+//   }
 }
 
 .item {
@@ -154,11 +154,11 @@
         height: 11.5px;
         position: relative;
       }
-      &:hover,
-      &:active {
-        border-color: darken($color: $gray-line, $amount: 80);
-        background-color: darken($color: $gray-line, $amount: 80);
-      }
+    //   &:hover,
+    //   &:active {
+    //     border-color: darken($color: $gray-line, $amount: 80);
+    //     background-color: darken($color: $gray-line, $amount: 80);
+    //   }
     }
   }
 }
@@ -200,14 +200,14 @@
           font-weight: 600;
         }
 
-        &:hover {
-          background-color: darken($color: $gray-line, $amount: 90);
-          border-color: darken($color: $gray-line, $amount: 90);
+        // &:hover {
+        //   background-color: darken($color: $gray-line, $amount: 90);
+        //   border-color: darken($color: $gray-line, $amount: 90);
 
-          span {
-            color: $gray-line;
-          }
-        }
+        //   span {
+        //     color: $gray-line;
+        //   }
+        // }
 
         svg {
           margin-right: 12px;
