@@ -22,7 +22,7 @@ function Icon({ classNames, icon, color }: IIconProps) {
 
 Icon.defaultProps = {
   classNames: "",
-  color: "black",
+  color: "white",
 };
 
 export default Icon;

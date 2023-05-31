@@ -1,4 +1,4 @@
-@import "../variables";
+@import '../variables';
 
 .button {
   display: inline-block;
@@ -25,9 +25,9 @@
     transition: all $duration ease-in-out;
   }
 
-  &:hover {
-    background-color: darken($orange, 8%);
-  }
+  // &:hover {
+  //   background-color: darken($orange, 8%);
+  // }
 
   &:active {
     background-color: darken($orange, 12%);
@@ -43,15 +43,20 @@
     min-width: 32px;
     padding: 0;
     border-width: 2px;
+
+    svg {
+      width: 0.7em;
+      height: 0.7em;
+    }
   }
 
   &--black {
     background-color: $black;
 
-    &:hover,
-    &:active {
-      background-color: lighten($color: $black, $amount: 10);
-    }
+    // &:hover,
+    // &:active {
+    //   background-color: lighten($color: $black, $amount: 10);
+    // }
   }
 
   &--outline {
@@ -68,20 +73,19 @@
       }
     }
 
-    &:hover {
-      background-color: $orange;
+    // &:hover {
+    //   background-color: $orange;
 
-      &,
-      span {
-        color: #fff;
-      }
+    //   &,
+    //   span {
+    //     color: $white;
+    //   }
 
-      svg {
-        path {
-          fill: #fff;
-        }
-      }
-    }
+    //   svg {
+    //     fill: $white;
+    //     stroke: $white;
+    //   }
+    // }
 
     &:active {
       background-color: darken($orange, 8%);
@@ -106,12 +110,12 @@
       font-size: 16px;
     }
 
-    &:hover {
-      i {
-        background-color: #fff;
-        color: $orange;
-      }
-    }
+    // &:hover {
+    //   i {
+    //     background-color: #fff;
+    //     color: $orange;
+    //   }
+    // }
 
     i {
       display: inline-block;
