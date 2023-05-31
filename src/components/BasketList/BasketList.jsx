@@ -23,16 +23,6 @@ function BasketList(params) {
   return (
     <div className="container container_cart">
       <div className={s.cart}>
-        <div className={s.top}>
-          <h2 className={s.title}>
-            <Icon icon="basket" color="black" />
-            Корзина
-          </h2>
-          <div className={s.clear}>
-            <Icon icon="trash" color="black" />
-            <span>Очистить корзину</span>
-          </div>
-        </div>
         <div className="content__items">
           {basketList.map((pizza, index) => (
             <div className={s.item} key={pizza.id}>

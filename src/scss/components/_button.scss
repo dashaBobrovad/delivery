@@ -29,10 +29,10 @@
   //   background-color: darken($orange, 8%);
   // }
 
-  &:active {
-    background-color: darken($orange, 12%);
-    transform: translateY(1px);
-  }
+  // &:active {
+  //   background-color: darken($orange, 12%);
+  //   transform: translateY(1px);
+  // }
 
   &--circle {
     display: flex;
@@ -87,9 +87,9 @@
     //   }
     // }
 
-    &:active {
-      background-color: darken($orange, 8%);
-    }
+    // &:active {
+    //   background-color: darken($orange, 8%);
+    // }
   }
 
   &__delimiter {
