@@ -1,5 +1,5 @@
-import { Categories, PizzaBlock, PizzaSkeleton, Sort } from 'components';
-import pizzasMock from 'data/mock';
+import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
+import pizzasMock from "data/mock";
 
 function MainPage(params) {
   const plugArray = Array(1).fill(null);

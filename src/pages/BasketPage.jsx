@@ -4,12 +4,8 @@ function BasketPage(params) {
   const isEmpty = false;
   return (
     <>
-      {isEmpty && (
-        <BasketEmpty />
-      )}
-      {!isEmpty && (
-        <BasketList />
-      )}
+      {isEmpty && <BasketEmpty />}
+      {!isEmpty && <BasketList />}
     </>
   );
 }

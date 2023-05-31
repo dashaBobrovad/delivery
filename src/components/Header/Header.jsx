@@ -1,6 +1,6 @@
-import Icon from 'components/Icon/Icon';
-import s from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import Icon from "components/Icon/Icon";
+import s from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 function Header(params) {
   return (

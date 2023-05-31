@@ -1,7 +1,7 @@
-import s from './BasketList.module.scss';
-import cx from 'classnames';
-import { Icon } from 'components';
-import { Link } from 'react-router-dom';
+import s from "./BasketList.module.scss";
+import cx from "classnames";
+import { Icon } from "components";
+import { Link } from "react-router-dom";
 
 // TODO: use Sprite
 // TODO: разнести на компоненты
@@ -10,8 +10,8 @@ const basketList = [
   {
     id: 0,
     imageUrl:
-      'https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg',
-    title: 'Пепперони Фреш с перцем',
+      "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
+    title: "Пепперони Фреш с перцем",
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 803,
@@ -47,7 +47,7 @@ function BasketList(params) {
               <div className={s.item__count}>
                 <div
                   className={cx(
-                    'button button--outline button--circle',
+                    "button button--outline button--circle",
                     s.item__count_minus
                   )}
                 >
@@ -56,7 +56,7 @@ function BasketList(params) {
                 <b>2</b>
                 <div
                   className={cx(
-                    'button button--outline button--circle',
+                    "button button--outline button--circle",
                     s.item__count_plus
                   )}
                 >
@@ -77,25 +77,25 @@ function BasketList(params) {
         <div className={s.bottom}>
           <div className={s.bottom__details}>
             <span>
-              {' '}
-              Всего пицц: <b>3 шт.</b>{' '}
+              {" "}
+              Всего пицц: <b>3 шт.</b>{" "}
             </span>
             <span>
-              {' '}
-              Сумма заказа: <b>900 ₽</b>{' '}
+              {" "}
+              Сумма заказа: <b>900 ₽</b>{" "}
             </span>
           </div>
           <div className={s.bottom__buttons}>
             <Link
               to="/"
-              className={cx('button button--outline button--add', s.back)}
+              className={cx("button button--outline button--add", s.back)}
             >
-              <Icon icon="grey-arrow-left" />
+              <Icon icon="arrowLeft" />
 
               <span>Вернуться назад</span>
             </Link>
 
-            <div className={cx('button', s.pay)}>
+            <div className={cx("button", s.pay)}>
               <span>Оплатить сейчас</span>
             </div>
           </div>

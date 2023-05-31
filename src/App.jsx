@@ -1,5 +1,5 @@
-import { Header, Routing, Sprite } from 'components';
-import './scss/app.scss';
+import { Header, Routing, Sprite } from "components";
+import "./scss/app.scss";
 
 function App() {
   return (
@@ -7,11 +7,9 @@ function App() {
       <Sprite />
 
       <div className="content">
-        
-          <Header />
+        <Header />
 
-          <Routing />
-  
+        <Routing />
       </div>
     </div>
   );

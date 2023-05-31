@@ -1,7 +1,7 @@
-@import '../../scss/variables';
+@import "../../scss/variables";
 
 .icon,
-[class*='icon_'] {
+[class*="icon_"] {
   display: inline-block;
   fill: $white;
   stroke: $white;
@@ -10,30 +10,29 @@
   height: 1.5em;
   font-size: 16px;
   stroke-width: 1px;
-}
 
-.icon {
-  &_logo {
-    fill: $black;
-    stroke: $black;
+  &.icon {
+    &_basket {
+      fill: none;
+    }
+
+    &_logo {
+      fill: $black;
+      stroke: $black;
+    }
+
+    &_trash {
+      fill: none;
+    }
+
+    &_black {
+      stroke: $black;
+      // fill: $black;
+    }
+
+    &_primary {
+      stroke: $orange;
+      fill: $orange;
+    }
   }
-
-  &_basket {
-    fill: none;
-  }
-}
-
-.icon {
-  &_black {
-    stroke: $black;
-    fill: $black;
-  }
-
-  &_primary{
-    stroke: $orange;
-    fill: $orange;
-  }
-}
-
-.icon_primary {
 }

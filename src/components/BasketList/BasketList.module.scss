@@ -1,8 +1,7 @@
-@import '../../scss/variables';
-@import '../../scss/libs/normalize';
+@import "../../scss/variables";
+@import "../../scss/libs/normalize";
 
 .cart {
-  
 }
 
 .top {
@@ -48,16 +47,16 @@
     transition: all $duration ease-in-out;
   }
 
-//   &:hover {
-//     svg {
-//       path {
-//         stroke: darken($color: #b6b6b6, $amount: 50);
-//       }
-//     }
-//     span {
-//       color: darken($color: #b6b6b6, $amount: 50);
-//     }
-//   }
+  //   &:hover {
+  //     svg {
+  //       path {
+  //         stroke: darken($color: #b6b6b6, $amount: 50);
+  //       }
+  //     }
+  //     span {
+  //       color: darken($color: #b6b6b6, $amount: 50);
+  //     }
+  //   }
 }
 
 .item {
@@ -154,75 +153,75 @@
         height: 11.5px;
         position: relative;
       }
-    //   &:hover,
-    //   &:active {
-    //     border-color: darken($color: $gray-line, $amount: 80);
-    //     background-color: darken($color: $gray-line, $amount: 80);
-    //   }
+      //   &:hover,
+      //   &:active {
+      //     border-color: darken($color: $gray-line, $amount: 80);
+      //     background-color: darken($color: $gray-line, $amount: 80);
+      //   }
     }
   }
 }
 
 .bottom {
-    margin: 50px 0;
+  margin: 50px 0;
 
-    &__details {
-      display: flex;
-      justify-content: space-between;
+  &__details {
+    display: flex;
+    justify-content: space-between;
 
-      span {
-        font-size: 22px;
+    span {
+      font-size: 22px;
 
-        &:last-of-type {
-          b {
-            color: $orange;
-          }
+      &:last-of-type {
+        b {
+          color: $orange;
         }
-      }
-    }
-
-    &__buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-
-      .back {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 210px;
-
-        border-color: darken($color: $gray-line, $amount: 10);
-
-        span {
-          color: darken($color: $gray-line, $amount: 20);
-          font-weight: 500;
-          font-weight: 600;
-        }
-
-        // &:hover {
-        //   background-color: darken($color: $gray-line, $amount: 90);
-        //   border-color: darken($color: $gray-line, $amount: 90);
-
-        //   span {
-        //     color: $gray-line;
-        //   }
-        // }
-
-        svg {
-          margin-right: 12px;
-          path {
-            fill: transparent;
-            stroke-width: 2;
-          }
-        }
-      }
-
-      .pay {
-        font-size: 16px;
-        font-weight: 600;
-        width: 210px;
-        padding: 16px;
       }
     }
   }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    .back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 210px;
+
+      border-color: darken($color: $gray-line, $amount: 10);
+
+      span {
+        color: darken($color: $gray-line, $amount: 20);
+        font-weight: 500;
+        font-weight: 600;
+      }
+
+      // &:hover {
+      //   background-color: darken($color: $gray-line, $amount: 90);
+      //   border-color: darken($color: $gray-line, $amount: 90);
+
+      //   span {
+      //     color: $gray-line;
+      //   }
+      // }
+
+      svg {
+        margin-right: 12px;
+        path {
+          fill: transparent;
+          stroke-width: 2;
+        }
+      }
+    }
+
+    .pay {
+      font-size: 16px;
+      font-weight: 600;
+      width: 210px;
+      padding: 16px;
+    }
+  }
+}
