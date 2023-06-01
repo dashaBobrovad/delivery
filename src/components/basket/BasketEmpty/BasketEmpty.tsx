@@ -1,4 +1,4 @@
-import emptyCartImg from "../../shared/img/empty-cart.png";
+import emptyCartImg from "../../../shared/img/empty-cart.png";
 
 import s from "./BasketEmpty.module.scss";
 import cx from "classnames";
