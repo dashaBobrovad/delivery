@@ -1,18 +1,18 @@
-import Icon from 'components/Icon/Icon';
-import s from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import Icon from "components/Icon/Icon";
+import s from "./Header.module.scss";
+import { Link } from "react-router-dom";
 
 function Header(params) {
   return (
     <div className={s.header}>
       <div className={`container ${s.container}`}>
-        <div className={s.logo}>
+        <Link to="/" className={s.logo}>
           <Icon icon="logo" />
           <div>
             <h1>React Pizza</h1>
             <p>самая вкусная пицца во вселенной</p>
           </div>
-        </div>
+        </Link>
         <div>
           <Link to="/basket" className="button button--cart">
             <span>520 ₽</span>

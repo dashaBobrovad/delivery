@@ -3,5 +3,5 @@ declare module "*.scss" {
   export default classes;
 }
 
-declare module '*.png';
-declare module '*.jpg';
+declare module "*.png";
+declare module "*.jpg";

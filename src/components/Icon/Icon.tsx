@@ -1,4 +1,5 @@
 import s from "./Icon.module.scss";
+import cx from "classnames";
 
 interface IIconProps {
   classNames?: string;
@@ -7,12 +8,17 @@ interface IIconProps {
 }
 
 function Icon({ classNames, icon, color }: IIconProps) {
+  console.log(color);
   return (
     <svg
       // TODO: fx undefined
-      className={`${s.icon} ${s[`icon_${icon}`]} ${
-        s[`icon_${color}`]
-      } ${classNames}`}
+      className={cx(
+        s.icon,
+        s.icon,
+        s[`icon_${color}`],
+        s[`icon_${icon}`],
+        classNames
+      )}
       role="img"
     >
       <use xlinkHref={`#${icon}`} />
