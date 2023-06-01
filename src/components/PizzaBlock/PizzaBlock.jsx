@@ -53,7 +53,7 @@ function PizzaBlock({ props }) {
       <div className={s.bottom}>
         <div className={s.price}>от {price} ₽</div>
         <div className="button button--outline button--add">
-          <Icon icon="arrowLeft" />
+          <Icon icon="plus" color="primary"/>
           <span>Добавить</span>
           <i>2</i>
         </div>

@@ -8,7 +8,7 @@ import Sort from "./Sort/Sort";
 import Categories from "./Categories/Categories";
 import BasketEmpty from "./BasketEmpty/BasketEmpty";
 import BasketList from "./BasketList/BasketList";
-
+import BasketFooter from "./BasketFooter/BasketFooter";
 export {
   Sprite,
   Routing,
@@ -18,6 +18,7 @@ export {
   Sort,
   Categories,
   BasketEmpty,
+  BasketFooter,
   BasketList,
   Icon,
 };

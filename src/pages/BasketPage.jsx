@@ -1,11 +1,11 @@
-import { BasketEmpty, BasketList } from "components";
+import { BasketEmpty, BasketFooter, BasketList } from "components";
 
 function BasketPage(params) {
   const isEmpty = false;
   return (
     <>
       {isEmpty && <BasketEmpty />}
-      {!isEmpty && <BasketList />}
+      {!isEmpty && <div className="container container_cart"><BasketList /><BasketFooter /></div>}
     </>
   );
 }
