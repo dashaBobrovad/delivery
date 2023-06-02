@@ -1,23 +1,34 @@
-import Sprite from "./Sprite";
-import Routing from "./Routing";
-import Icon from "./Icon/Icon";
-import Header from "./Header/Header";
-import PizzaBlock from "./PizzaBlock/PizzaBlock";
-import PizzaSkeleton from "./PizzaSkeleton/PizzaSkeleton";
-import Sort from "./Sort/Sort";
-import Categories from "./Categories/Categories";
-import BasketEmpty from "./BasketEmpty/BasketEmpty";
-import BasketList from "./BasketList/BasketList";
+import Sprite from './Sprite';
+import Routing from './Routing';
+
+// ui
+import Icon from './ui/Icon/Icon';
+import Header from './ui/Header/Header';
+import Sort from './ui/Sort/Sort';
+import Categories from './ui/Categories/Categories';
+
+// pizza
+import PizzaBlock from './pizza/PizzaBlock/PizzaBlock';
+import PizzaSkeleton from './pizza/PizzaSkeleton/PizzaSkeleton';
+
+// basket
+import BasketEmpty from './basket/BasketEmpty/BasketEmpty';
+import BasketList from './basket/BasketList/BasketList';
+import BasketFooter from './basket/BasketFooter/BasketFooter';
 
 export {
   Sprite,
   Routing,
+  // ui
+  Icon,
   Header,
-  PizzaBlock,
-  PizzaSkeleton,
   Sort,
   Categories,
+  // pizza
+  PizzaBlock,
+  PizzaSkeleton,
+  // basket
   BasketEmpty,
   BasketList,
-  Icon,
+  BasketFooter,
 };
