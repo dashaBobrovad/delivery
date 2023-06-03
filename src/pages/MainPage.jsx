@@ -1,8 +1,18 @@
-import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
-import pizzasMock from "data/mock";
+import { useEffect } from 'react';
+import { Categories, PizzaBlock, PizzaSkeleton, Sort } from 'components';
+import pizzasMock from 'data/mock';
+import { useDispatch, useSelector } from 'react-redux';
+import fetchPizzas from 'data/redux/asyncActions/pizzas';
 
 function MainPage(params) {
   const plugArray = Array(1).fill(null);
+  const dispatch = useDispatch();
+
+  const pizzas = useSelector((state) => state.pizzas.pizzas);
+
+  useEffect(() => {
+    dispatch(fetchPizzas());
+  }, []);
 
   return (
     <div className="container">
@@ -16,7 +26,7 @@ function MainPage(params) {
           <PizzaSkeleton key={index} />
         ))}
 
-        {pizzasMock.map((pizza, index) => (
+        {pizzas.map((pizza, index) => (
           <PizzaBlock props={pizza} key={pizza.id} />
         ))}
       </div>
