@@ -15,7 +15,8 @@ const basketList = [
     rating: 4,
   },
 ];
-function BasketList(params) {
+function BasketList() {
+  // TODP: get data (store)
   return (
     <div className={s.cart}>
       <div className="content__items">
@@ -59,32 +60,7 @@ function BasketList(params) {
           </div>
         ))}
       </div>
-      {/* <div className={s.bottom}>
-        <div className={s.bottom__details}>
-          <span>
-            {' '}
-            Всего пицц: <b>3 шт.</b>{' '}
-          </span>
-          <span>
-            {' '}
-            Сумма заказа: <b>900 ₽</b>{' '}
-          </span>
-        </div>
-        <div className={s.bottom__buttons}>
-          <Link
-            to="/"
-            className={cx('button button--outline button--add', s.back)}
-          >
-            <Icon icon="arrowLeft" />
-
-            <span>Вернуться назад</span>
-          </Link>
-
-          <div className={cx('button', s.pay)}>
-            <span>Оплатить сейчас</span>
-          </div>
-        </div>
-      </div> */}
+      
     </div>
   );
 }

@@ -2,7 +2,7 @@ import {Icon} from "components";
 import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-function Header(params) {
+function Header() {
   return (
     <div className={s.header}>
       <div className={`container ${s.container}`}>

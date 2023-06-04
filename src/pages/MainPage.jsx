@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from 'components';
-import pizzasMock from 'data/mock';
 import { useDispatch, useSelector } from 'react-redux';
 import fetchPizzas from 'data/redux/asyncActions/pizzas';
 
@@ -27,7 +26,7 @@ function MainPage(params) {
         ))}
 
         {pizzas.map((pizza, index) => (
-          <PizzaBlock props={pizza} key={pizza.id} />
+          <PizzaBlock pizza={pizza} key={pizza.id} />
         ))}
       </div>
     </div>
