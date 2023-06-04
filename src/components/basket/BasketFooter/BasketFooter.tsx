@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { Icon } from 'components';
 import { Link } from 'react-router-dom';
 
-function BasketFooter(params) {
+function BasketFooter() {
     return (
         <div className={s.basketFooter}>
         <div className={s.basketFooter__details}>

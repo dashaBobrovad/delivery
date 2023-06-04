@@ -1,20 +1,25 @@
 import { Icon } from "components";
 import { useState } from "react";
+import { IPizza } from "types";
 import s from "./PizzaBlock.module.scss";
 
-function PizzaBlock({ props }) {
-  const { title, imageUrl, types, sizes, price } = props;
+interface IPizzaBlockProps {
+  pizza: IPizza;
+}
+
+function PizzaBlock({pizza}: IPizzaBlockProps) {
+  const { title, imageUrl, types, sizes, price } = pizza;
 
   const typesList = ["Тонкое", "толстое"];
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  const changeActiveType = (index) => {
+  const changeActiveType = (index:number) => {
     setActiveType(index);
   };
 
-  const changeActiveSize = (index) => {
+  const changeActiveSize = (index:number) => {
     setActiveSize(index);
   };
 

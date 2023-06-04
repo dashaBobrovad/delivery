@@ -9,12 +9,12 @@ function Sort() {
 
   const [open, setOpen] = useState(false);
 
-  function onActiveClick(index) {
+  function onActiveClick(index: number) {
     setActive(index);
     setOpen(false);
   }
 
-  function toggleOpen(params) {
+  function toggleOpen() {
     setOpen((prev) => !prev);
   }
 

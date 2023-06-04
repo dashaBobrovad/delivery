@@ -13,7 +13,7 @@ function Categories() {
 
   const [active, setActive] = useState(0);
 
-  function onActiveClick(index) {
+  function onActiveClick(index: number) {
     setActive(index);
   }
 
