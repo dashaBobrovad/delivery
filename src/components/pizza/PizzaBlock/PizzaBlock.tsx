@@ -7,7 +7,7 @@ interface IPizzaBlockProps {
   pizza: IPizza;
 }
 
-function PizzaBlock({pizza}: IPizzaBlockProps) {
+function PizzaBlock({ pizza }: IPizzaBlockProps) {
   const { title, imageUrl, types, sizes, price } = pizza;
 
   const typesList = ["Тонкое", "толстое"];
@@ -15,11 +15,11 @@ function PizzaBlock({pizza}: IPizzaBlockProps) {
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  const changeActiveType = (index:number) => {
+  const changeActiveType = (index: number) => {
     setActiveType(index);
   };
 
-  const changeActiveSize = (index:number) => {
+  const changeActiveSize = (index: number) => {
     setActiveSize(index);
   };
 
@@ -58,7 +58,7 @@ function PizzaBlock({pizza}: IPizzaBlockProps) {
       <div className={s.bottom}>
         <div className={s.price}>от {price} ₽</div>
         <div className="button button--outline button--add">
-          <Icon icon="plus" color="primary"/>
+          <Icon icon="plus" color="primary" />
           <span>Добавить</span>
           <i>2</i>
         </div>

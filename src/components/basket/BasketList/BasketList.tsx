@@ -1,13 +1,13 @@
-import s from './BasketList.module.scss';
-import cx from 'classnames';
-import { Icon } from 'components';
+import s from "./BasketList.module.scss";
+import cx from "classnames";
+import { Icon } from "components";
 
 const basketList = [
   {
     id: 0,
     imageUrl:
-      'https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg',
-    title: 'Пепперони Фреш с перцем',
+      "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
+    title: "Пепперони Фреш с перцем",
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 803,
@@ -33,7 +33,7 @@ function BasketList() {
             <div className={s.item__count}>
               <div
                 className={cx(
-                  'button button--outline button--circle',
+                  "button button--outline button--circle",
                   s.item__count_minus
                 )}
               >
@@ -42,7 +42,7 @@ function BasketList() {
               <b>2</b>
               <div
                 className={cx(
-                  'button button--outline button--circle',
+                  "button button--outline button--circle",
                   s.item__count_plus
                 )}
               >
@@ -60,7 +60,6 @@ function BasketList() {
           </div>
         ))}
       </div>
-      
     </div>
   );
 }

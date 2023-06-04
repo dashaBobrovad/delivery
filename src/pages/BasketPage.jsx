@@ -5,7 +5,12 @@ function BasketPage(params) {
   return (
     <>
       {isEmpty && <BasketEmpty />}
-      {!isEmpty && <div className="container container_cart"><BasketList /><BasketFooter /></div>}
+      {!isEmpty && (
+        <div className="container container_cart">
+          <BasketList />
+          <BasketFooter />
+        </div>
+      )}
     </>
   );
 }

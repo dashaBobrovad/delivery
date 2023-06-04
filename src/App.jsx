@@ -1,7 +1,6 @@
 import { Header, Routing, Sprite } from "components";
 import "./scss/app.scss";
 
-
 /*
   - получение данных с бэка
   - запись в локальное хранилище

@@ -1,4 +1,4 @@
-import {Icon} from "components";
+import { Icon } from "components";
 import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
