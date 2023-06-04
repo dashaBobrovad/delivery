@@ -1,18 +1,17 @@
 import { useEffect } from "react";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
-import { useDispatch } from "react-redux";
 import fetchPizzas from "data/redux/asyncActions/pizzas";
-import { useTypedSelector } from "data/hooks";
+import { useTypedSelector, useTypedDispatch } from "data/hooks";
 
 function MainPage() {
   const plugArray = Array(1).fill(null);
-  const dispatch = useDispatch();
+  const dispatch = useTypedDispatch();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
 
   useEffect(() => {
-    // TODO: fx this type & use thunk from toolkit or use useTypedDispatch from crush
-    dispatch(fetchPizzas() as any);
+    // TODO: thunk from toolkit
+    dispatch(fetchPizzas());
   }, []);
 
   return (
