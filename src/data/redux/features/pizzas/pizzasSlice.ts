@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { IPizza } from "types";
 
-const initialState = {
+export interface IPizzaState {
+  pizzas: IPizza[];
+}
+
+export type PizzaAction = PayloadAction<IPizza[]>;
+
+const initialState: IPizzaState = {
   pizzas: [],
 };
 
@@ -8,7 +16,7 @@ export const pizzasSlice = createSlice({
   name: "pizzas",
   initialState,
   reducers: {
-    get: (state, action) => {
+    get: (state, action: PizzaAction) => {
       state.pizzas = action.payload;
     },
   },
