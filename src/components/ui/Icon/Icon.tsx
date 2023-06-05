@@ -8,7 +8,6 @@ interface IIconProps {
 }
 
 function Icon({ classNames, icon, color }: IIconProps) {
-  console.log(color);
   return (
     <svg
       // TODO: fx undefined
