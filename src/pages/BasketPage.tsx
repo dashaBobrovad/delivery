@@ -1,6 +1,6 @@
 import { BasketEmpty, BasketFooter, BasketList } from "components";
 
-function BasketPage(params) {
+function BasketPage() {
   const isEmpty = false;
   return (
     <>
