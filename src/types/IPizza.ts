@@ -7,6 +7,7 @@ export interface IPizza {
   price: number;
   category: number;
   rating: number;
+  count?: number;
 }
 
 export default IPizza;

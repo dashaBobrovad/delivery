@@ -1,16 +1,20 @@
-import { Icon } from "components";
-import { useState } from "react";
-import { IPizza } from "types";
-import s from "./PizzaBlock.module.scss";
+import { Icon } from 'components';
+import { useTypedDispatch, useTypedSelector } from 'data/hooks';
+import { addToBasket } from 'data/redux/features/pizzas/pizzasSlice';
+import { useState } from 'react';
+import { IPizza } from 'types';
+import s from './PizzaBlock.module.scss';
 
 interface IPizzaBlockProps {
   pizza: IPizza;
 }
 
 function PizzaBlock({ pizza }: IPizzaBlockProps) {
-  const { title, imageUrl, types, sizes, price } = pizza;
+  const { id, title, imageUrl, types, sizes, price } = pizza;
 
-  const typesList = ["Тонкое", "толстое"];
+  const dispatch = useTypedDispatch();
+
+  const typesList = ['Тонкое', 'толстое'];
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
@@ -23,6 +27,13 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     setActiveSize(index);
   };
 
+  const onAddToBasket = () => {
+    dispatch(addToBasket(pizza));
+    console.log('onAddToBasket')
+  };
+
+  const basketPizza = useTypedSelector((state) => state.pizzas.basket)
+console.log(basketPizza)
   return (
     <div className={s.pizza}>
       <img className={s.image} src={imageUrl} alt={title} />
@@ -32,7 +43,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
           {types.map((type, index) => (
             <li
               className={`${s.item} ${
-                index === activeType ? s.item_active : ""
+                index === activeType ? s.item_active : ''
               }`}
               key={index}
               onClick={() => changeActiveType(index)}
@@ -45,7 +56,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
           {sizes.map((size, index) => (
             <li
               className={`${s.item} ${
-                index === activeSize ? s.item_active : ""
+                index === activeSize ? s.item_active : ''
               }`}
               key={index}
               onClick={() => changeActiveSize(index)}
@@ -57,11 +68,11 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
       </div>
       <div className={s.bottom}>
         <div className={s.price}>от {price} ₽</div>
-        <div className="button button--outline button--add">
+        <button onClick={onAddToBasket} className="button button--outline button--add">
           <Icon icon="plus" color="primary" />
           <span>Добавить</span>
           <i>2</i>
-        </div>
+        </button>
       </div>
     </div>
   );
