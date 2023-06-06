@@ -23,11 +23,17 @@ export const pizzasSlice = createSlice({
       state.pizzas = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      const count = action.payload.count === undefined ? 1 : action.payload.count + 1;
-      state.basket.push(Object.assign({count: count}, action.payload));
-      state.basket.push(action.payload);
-      
-    },
+      // console.log('addToBasket')
+      // console.log(action.payload.count)
+      // let count = action.payload.count === undefined ? 1 : action.payload.count + 1;
+      // console.log(count)
+      // state.basket.push(Object.assign({count: count}, action.payload));
+      // state.basket.push(action.payload);
+      let count = action.payload.count === undefined ? 1 : action.payload.count + 1;
+      //state.pizzas.push(Object.assign({count: count}, action.payload));
+      let pizza = state.pizzas.find(item => item.id === action.payload.id);
+      Object.assign({count: count}, pizza)
+    }
   },
 });
 

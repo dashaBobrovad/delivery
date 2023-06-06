@@ -27,13 +27,25 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     setActiveSize(index);
   };
 
+  
+  // const basketPizza = useTypedSelector((state) => state.pizzas.basket.find(item => item.id === id))
+
+  
   const onAddToBasket = () => {
+    // if(basketPizza){
+    //   console.log('add basketPizza')
+    //   dispatch(addToBasket(basketPizza));
+    // } else {
+    //   console.log('add pizza')
+    //   dispatch(addToBasket(pizza));
+    // }
+   
     dispatch(addToBasket(pizza));
+
     console.log('onAddToBasket')
   };
 
-  const basketPizza = useTypedSelector((state) => state.pizzas.basket)
-console.log(basketPizza)
+  
   return (
     <div className={s.pizza}>
       <img className={s.image} src={imageUrl} alt={title} />
@@ -71,7 +83,7 @@ console.log(basketPizza)
         <button onClick={onAddToBasket} className="button button--outline button--add">
           <Icon icon="plus" color="primary" />
           <span>Добавить</span>
-          <i>2</i>
+          <i>{pizza.count || 0}</i>
         </button>
       </div>
     </div>
