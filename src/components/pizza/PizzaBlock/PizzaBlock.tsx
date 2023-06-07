@@ -27,29 +27,15 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     setActiveSize(index);
   };
 
-  // не меняется кол-во, потому что не пересчитывается где-то здесь
-  const basketPizza = useTypedSelector((state) => state.pizzas.basket.find(item => item.id === id))
-
-  useEffect(() => {
-    console.log(basketPizza)
-  
-  
-  }, [basketPizza])
-  
-  
   const onAddToBasket = () => {
-    if(basketPizza){
-      console.log('add basketPizza')
-      dispatch(addToBasket(basketPizza));
-    } else {
-      console.log('add pizza')
-      dispatch(addToBasket(pizza));
-    }
-   
+      dispatch(addToBasket(id));
     console.log('onAddToBasket')
   };
 
-  
+  //const basketPizza = useTypedSelector((state) => state.pizzas.basket.find((pizza) => pizza.id === id))
+  const basketPizza = useTypedSelector((state) => state.pizzas.basket.find(item => item.id === id))
+  console.log(basketPizza)
+
   return (
     <div className={s.pizza}>
       <img className={s.image} src={imageUrl} alt={title} />
