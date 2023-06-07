@@ -1,7 +1,7 @@
 import { Icon } from 'components';
 import { useTypedDispatch, useTypedSelector } from 'data/hooks';
 import { addToBasket } from 'data/redux/features/pizzas/pizzasSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IPizza } from 'types';
 import s from './PizzaBlock.module.scss';
 
@@ -27,13 +27,29 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     setActiveSize(index);
   };
 
+  // не меняется кол-во, потому что не пересчитывается где-то здесь
+  const basketPizza = useTypedSelector((state) => state.pizzas.basket.find(item => item.id === id))
+
+  useEffect(() => {
+    console.log(basketPizza)
+  
+  
+  }, [basketPizza])
+  
+  
   const onAddToBasket = () => {
-    dispatch(addToBasket(pizza));
+    if(basketPizza){
+      console.log('add basketPizza')
+      dispatch(addToBasket(basketPizza));
+    } else {
+      console.log('add pizza')
+      dispatch(addToBasket(pizza));
+    }
+   
     console.log('onAddToBasket')
   };
 
-  const basketPizza = useTypedSelector((state) => state.pizzas.basket)
-console.log(basketPizza)
+  
   return (
     <div className={s.pizza}>
       <img className={s.image} src={imageUrl} alt={title} />
@@ -71,7 +87,7 @@ console.log(basketPizza)
         <button onClick={onAddToBasket} className="button button--outline button--add">
           <Icon icon="plus" color="primary" />
           <span>Добавить</span>
-          <i>2</i>
+          <i>{basketPizza?.count || 0}</i>
         </button>
       </div>
     </div>

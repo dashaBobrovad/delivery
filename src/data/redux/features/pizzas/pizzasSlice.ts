@@ -23,10 +23,10 @@ export const pizzasSlice = createSlice({
       state.pizzas = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // action.payload.count = action.payload.count === undefined ? 1 : action.payload.count + 1;
-      // action.payload.count = 11111;
+      let count = action.payload.count === undefined ? 1 : action.payload.count + 1;
+      state.basket.push(Object.assign({count: count}, action.payload));
       state.basket.push(action.payload);
-      // state.basket.push(Object.assign(action.payload, {count: 1111}));
+      
     },
   },
 });
