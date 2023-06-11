@@ -1,6 +1,6 @@
 import { IPizza } from "types";
 
-const pizzasMock:IPizza[] = [
+const pizzasMock: IPizza[] = [
   {
     id: 0,
     imageUrl:
