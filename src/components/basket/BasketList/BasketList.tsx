@@ -1,12 +1,27 @@
-import s from "./BasketList.module.scss";
-import cx from "classnames";
-import { Icon } from "components";
-import { useTypedSelector } from "data/hooks";
+import s from './BasketList.module.scss';
+import cx from 'classnames';
+import { Icon } from 'components';
+import { useTypedDispatch, useTypedSelector } from 'data/hooks';
+import {
+  decreasePizzaCount,
+  increasePizzaCount,
+} from 'data/redux/features/pizzas/pizzasSlice';
 
 function BasketList() {
-  const basketList = useTypedSelector((state) => state.pizzas.basket);
+  const basketList = useTypedSelector((state) => state.pizzas.basket.list);
 
-  console.log(basketList);
+  const dispatch = useTypedDispatch();
+
+  const onIncreasePizzaCount = (id: number) => {
+    console.log('onIncreasePizzaCount');
+    dispatch(increasePizzaCount(id));
+  };
+
+  const onDecreasePizzaCount = (id: number) => {
+    console.log('onDecreasePizzaCount');
+    dispatch(decreasePizzaCount(id));
+  };
+
   return (
     <div className={s.cart}>
       <div className="content__items">
@@ -22,31 +37,36 @@ function BasketList() {
               <p>тонкое тесто, 26 см.</p>
             </div>
             <div className={s.item__count}>
-              <div
+              <button
                 className={cx(
-                  "button button--outline button--circle",
+                  'button button--outline button--circle',
                   s.item__count_minus
                 )}
+                onClick={() => onDecreasePizzaCount(pizza.id)}
+                // TODO fx as number everywhere !
+                disabled={pizza.count as number <=1 ? true : false}
+                
               >
                 <Icon icon="minus" color="primary" />
-              </div>
+              </button>
               <b>{pizza.count}</b>
-              <div
+              <button
                 className={cx(
-                  "button button--outline button--circle",
+                  'button button--outline button--circle',
                   s.item__count_plus
                 )}
+                onClick={() => onIncreasePizzaCount(pizza.id)}
               >
                 <Icon icon="plus" color="primary" />
-              </div>
+              </button>
             </div>
             <div className={s.item__price}>
               <b>{pizza.sum} ₽</b>
             </div>
             <div className={s.item__remove}>
-              <div className="button button--outline button--circle">
+              <button className="button button--outline button--circle">
                 <Icon icon="cross" color="primary" />
-              </div>
+              </button>
             </div>
           </div>
         ))}

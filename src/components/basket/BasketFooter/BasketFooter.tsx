@@ -2,18 +2,22 @@ import s from "./BasketFooter.module.scss";
 import cx from "classnames";
 import { Icon } from "components";
 import { Link } from "react-router-dom";
+import { useTypedSelector } from "data/hooks";
 
 function BasketFooter() {
+  const basketCount = useTypedSelector((state) => state.pizzas.basket.count);
+  const basketSum = useTypedSelector((state) => state.pizzas.basket.sum);
+
   return (
     <div className={s.basketFooter}>
       <div className={s.basketFooter__details}>
         <span>
           {" "}
-          Всего пицц: <b>3 шт.</b>{" "}
+          Всего пицц: <b>{basketCount} шт.</b>{" "}
         </span>
         <span>
           {" "}
-          Сумма заказа: <b>900 ₽</b>{" "}
+          Сумма заказа: <b>{basketSum} ₽</b>{" "}
         </span>
       </div>
       <div className={s.basketFooter__buttons}>

@@ -1,7 +1,7 @@
 import { Icon } from "components";
 import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IPizza } from "types";
 import s from "./PizzaBlock.module.scss";
 
@@ -29,15 +29,11 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
 
   const onAddToBasket = () => {
     dispatch(addToBasket(id));
-    console.log("onAddToBasket");
   };
 
-  //const basketPizza = useTypedSelector((state) => state.pizzas.basket.find((pizza) => pizza.id === id))
   const basketPizza = useTypedSelector((state) =>
-    state.pizzas.basket.find((item) => item.id === id)
+    state.pizzas.basket.list.find((item) => item.id === id)
   );
-  console.log(basketPizza);
-
   return (
     <div className={s.pizza}>
       <img className={s.image} src={imageUrl} alt={title} />

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 // import { AppThunkDispatch } from "../../types/storeTypes";
-import { AnyAction, Store } from "redux";
+import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
 import { RootState } from "../redux/store";
 
