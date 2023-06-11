@@ -1,4 +1,4 @@
-@import "../variables";
+@import '../variables';
 
 .button {
   display: inline-block;
@@ -12,6 +12,12 @@
     border-color $duration ease-in-out;
   border: 1px solid transparent;
   @include noselect();
+
+  &:disabled {
+    filter: grayscale(9);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 
   &,
   span {
