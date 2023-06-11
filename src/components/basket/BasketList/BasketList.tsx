@@ -4,7 +4,7 @@ import { Icon } from "components";
 import { useTypedSelector } from "data/hooks";
 
 function BasketList() {
-  const basketList = useTypedSelector((state) => state.pizzas.basket);
+  const basketList = useTypedSelector((state) => state.pizzas.basket.list);
 
   console.log(basketList);
   return (
