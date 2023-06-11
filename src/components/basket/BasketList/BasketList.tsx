@@ -1,22 +1,12 @@
 import s from "./BasketList.module.scss";
 import cx from "classnames";
 import { Icon } from "components";
+import { useTypedSelector } from "data/hooks";
 
-const basketList = [
-  {
-    id: 0,
-    imageUrl:
-      "https://dodopizza.azureedge.net/static/Img/Products/f035c7f46c0844069722f2bb3ee9f113_584x584.jpeg",
-    title: "Пепперони Фреш с перцем",
-    types: [0, 1],
-    sizes: [26, 30, 40],
-    price: 803,
-    category: 0,
-    rating: 4,
-  },
-];
 function BasketList() {
-  // TODP: get data (store)
+  const basketList = useTypedSelector((state) => state.pizzas.basket);
+
+  console.log(basketList);
   return (
     <div className={s.cart}>
       <div className="content__items">
@@ -26,8 +16,9 @@ function BasketList() {
               <img src={pizza.imageUrl} alt="Pizza" />
             </div>
             <div className={s.item__info}>
-              {/* TODO: по id ? */}
-              <h3>Сырный цыпленок</h3>
+              <h3>{pizza.title}</h3>
+              {/* TODO: по id ? + вынести список типов теста и размеров в какую-т ообщую переменную/хук, 
+              чтобы можно было обращаться*/}
               <p>тонкое тесто, 26 см.</p>
             </div>
             <div className={s.item__count}>
@@ -39,7 +30,7 @@ function BasketList() {
               >
                 <Icon icon="minus" color="primary" />
               </div>
-              <b>2</b>
+              <b>{pizza.count}</b>
               <div
                 className={cx(
                   "button button--outline button--circle",
@@ -50,7 +41,7 @@ function BasketList() {
               </div>
             </div>
             <div className={s.item__price}>
-              <b>770 ₽</b>
+              <b>{pizza.sum} ₽</b>
             </div>
             <div className={s.item__remove}>
               <div className="button button--outline button--circle">
