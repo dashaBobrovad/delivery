@@ -1,14 +1,31 @@
 // типы теста для пиццы
-const pizzaDoughTypes = ['Тонкое', 'Толстое'];
+export enum EPizzaDoughTypes {
+  THIN = 'Тонкое',
+  THICK = 'Толстое',
+}
+
+const pizzaDoughTypes: EPizzaDoughTypes[] = [
+  EPizzaDoughTypes.THIN,
+  EPizzaDoughTypes.THICK,
+];
 
 // категории пицц
-const pizzaCategories = [
-  'Все',
-  'Мясные',
-  'Вегетарианская',
-  'Гриль',
-  'Острые',
-  'Закрытые',
+export enum EPizzaCategories {
+  ALL = 'Все',
+  MEAT = 'Мясные',
+  VEGAN = 'Вегетарианские',
+  GRILL = 'Гриль',
+  SPICY = 'Острые',
+  CLOSED = 'Закрытые',
+}
+
+const pizzaCategories: EPizzaCategories[] = [
+  EPizzaCategories.ALL,
+  EPizzaCategories.MEAT,
+  EPizzaCategories.VEGAN,
+  EPizzaCategories.GRILL,
+  EPizzaCategories.SPICY,
+  EPizzaCategories.CLOSED
 ];
 
 // размеры пицц
