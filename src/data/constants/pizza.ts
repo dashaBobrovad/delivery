@@ -25,10 +25,16 @@ const pizzaCategories: EPizzaCategories[] = [
   EPizzaCategories.VEGAN,
   EPizzaCategories.GRILL,
   EPizzaCategories.SPICY,
-  EPizzaCategories.CLOSED
+  EPizzaCategories.CLOSED,
 ];
 
 // размеры пицц
-const pizzaSizes = [26, 30, 40];
+export enum EPizzaSizes {
+  S = 26,
+  M = 30,
+  L = 40,
+}
+
+const pizzaSizes: EPizzaSizes[] = [EPizzaSizes.S, EPizzaSizes.M, EPizzaSizes.L];
 
 export { pizzaDoughTypes, pizzaCategories, pizzaSizes };
