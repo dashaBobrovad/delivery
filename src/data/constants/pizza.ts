@@ -1,5 +1,5 @@
 // типы теста для пиццы
-const pizzaDoughTypes = ['Тонкое', 'толстое'];
+const pizzaDoughTypes = ['Тонкое', 'Толстое'];
 
 // категории пицц
 const pizzaCategories = [
