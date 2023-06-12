@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { IPizza } from 'types';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { IPizza } from "types";
 
 export interface IPizzaState {
   pizzas: IPizza[];
@@ -22,14 +22,14 @@ const initialState: IPizzaState = {
 };
 
 export const pizzasSlice = createSlice({
-  name: 'pizzas',
+  name: "pizzas",
   initialState,
   reducers: {
     get: (state, action: PizzaAction) => {
       state.pizzas = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // TODO: неправильно считается сумма 
+      // TODO: неправильно считается сумма
       let idx = state.basket.list.findIndex(
         (item) => item.id === action.payload
       );
@@ -38,7 +38,7 @@ export const pizzasSlice = createSlice({
         state.basket.list[idx].count =
           (state.basket.list[idx].count as number) + 1;
         state.basket.list[idx].sum =
-        state.basket.list[idx].sum as number + state.basket.list[idx].price;
+          (state.basket.list[idx].sum as number) + state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
       } else {
         const foundPizza = state.pizzas.find(

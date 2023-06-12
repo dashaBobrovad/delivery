@@ -1,11 +1,11 @@
-import s from './BasketList.module.scss';
-import cx from 'classnames';
-import { Icon } from 'components';
-import { useTypedDispatch, useTypedSelector } from 'data/hooks';
+import s from "./BasketList.module.scss";
+import cx from "classnames";
+import { Icon } from "components";
+import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import {
   decreasePizzaCount,
   increasePizzaCount,
-} from 'data/redux/features/pizzas/pizzasSlice';
+} from "data/redux/features/pizzas/pizzasSlice";
 
 function BasketList() {
   const basketList = useTypedSelector((state) => state.pizzas.basket.list);
@@ -13,12 +13,12 @@ function BasketList() {
   const dispatch = useTypedDispatch();
 
   const onIncreasePizzaCount = (id: number) => {
-    console.log('onIncreasePizzaCount');
+    console.log("onIncreasePizzaCount");
     dispatch(increasePizzaCount(id));
   };
 
   const onDecreasePizzaCount = (id: number) => {
-    console.log('onDecreasePizzaCount');
+    console.log("onDecreasePizzaCount");
     dispatch(decreasePizzaCount(id));
   };
 
@@ -39,20 +39,19 @@ function BasketList() {
             <div className={s.item__count}>
               <button
                 className={cx(
-                  'button button--outline button--circle',
+                  "button button--outline button--circle",
                   s.item__count_minus
                 )}
                 onClick={() => onDecreasePizzaCount(pizza.id)}
                 // TODO fx as number everywhere !
-                disabled={pizza.count as number <=1 ? true : false}
-                
+                disabled={(pizza.count as number) <= 1 ? true : false}
               >
                 <Icon icon="minus" color="primary" />
               </button>
               <b>{pizza.count}</b>
               <button
                 className={cx(
-                  'button button--outline button--circle',
+                  "button button--outline button--circle",
                   s.item__count_plus
                 )}
                 onClick={() => onIncreasePizzaCount(pizza.id)}
