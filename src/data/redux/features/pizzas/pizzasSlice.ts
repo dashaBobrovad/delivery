@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { IPizza } from "types";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { IPizza } from 'types';
 
 export interface IPizzaState {
   pizzas: IPizza[];
@@ -11,6 +11,7 @@ export type PizzaAction = PayloadAction<IPizza[]>;
 export type AddToBasketAction = PayloadAction<number>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
+export type RemovePizzaAction = PayloadAction<number>;
 
 const initialState: IPizzaState = {
   pizzas: [],
@@ -22,7 +23,7 @@ const initialState: IPizzaState = {
 };
 
 export const pizzasSlice = createSlice({
-  name: "pizzas",
+  name: 'pizzas',
   initialState,
   reducers: {
     get: (state, action: PizzaAction) => {
@@ -87,11 +88,30 @@ export const pizzasSlice = createSlice({
         }
       }
     },
+    removePizza: (state, action: RemovePizzaAction) => {
+      // ищем индекс и удаляем
+      const idx = state.basket.list.findIndex(
+        (item) => item.id === action.payload
+      );
+
+      if (idx !== -1) {
+        state.basket.count =
+          state.basket.count - (state.basket.list[idx]?.count as number);
+        state.basket.sum =
+          state.basket.sum - (state.basket.list[idx].sum as number);
+      }
+      state.basket.list.splice(idx, 1);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { get, addToBasket, increasePizzaCount, decreasePizzaCount } =
-  pizzasSlice.actions;
+export const {
+  get,
+  addToBasket,
+  increasePizzaCount,
+  decreasePizzaCount,
+  removePizza,
+} = pizzasSlice.actions;
 
 export default pizzasSlice.reducer;

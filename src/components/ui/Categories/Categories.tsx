@@ -1,15 +1,8 @@
+import { pizzaCategories } from "data/constants/pizza";
 import React, { useState } from "react";
 import s from "./Categories.module.scss";
 
 function Categories() {
-  const categories = [
-    "Все",
-    "Мясные",
-    "Вегетарианская",
-    "Гриль",
-    "Острые",
-    "Закрытые",
-  ];
 
   const [active, setActive] = useState(0);
 
@@ -20,7 +13,7 @@ function Categories() {
   return (
     <div className={s.categories}>
       <ul className={s.list}>
-        {categories.map((category, index) => (
+        {pizzaCategories.map((category, index) => (
           <li
             key={index}
             className={`${s.category} ${

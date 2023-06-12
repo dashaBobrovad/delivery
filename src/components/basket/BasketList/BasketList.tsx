@@ -1,11 +1,12 @@
-import s from "./BasketList.module.scss";
-import cx from "classnames";
-import { Icon } from "components";
-import { useTypedDispatch, useTypedSelector } from "data/hooks";
+import s from './BasketList.module.scss';
+import cx from 'classnames';
+import { Icon } from 'components';
+import { useTypedDispatch, useTypedSelector } from 'data/hooks';
 import {
   decreasePizzaCount,
   increasePizzaCount,
-} from "data/redux/features/pizzas/pizzasSlice";
+  removePizza,
+} from 'data/redux/features/pizzas/pizzasSlice';
 
 function BasketList() {
   const basketList = useTypedSelector((state) => state.pizzas.basket.list);
@@ -13,13 +14,16 @@ function BasketList() {
   const dispatch = useTypedDispatch();
 
   const onIncreasePizzaCount = (id: number) => {
-    console.log("onIncreasePizzaCount");
     dispatch(increasePizzaCount(id));
   };
 
   const onDecreasePizzaCount = (id: number) => {
-    console.log("onDecreasePizzaCount");
     dispatch(decreasePizzaCount(id));
+  };
+
+  const onRemovePizza = (id: number) => {
+    console.log('onRemovePizza');
+    dispatch(removePizza(id));
   };
 
   return (
@@ -39,7 +43,7 @@ function BasketList() {
             <div className={s.item__count}>
               <button
                 className={cx(
-                  "button button--outline button--circle",
+                  'button button--outline button--circle',
                   s.item__count_minus
                 )}
                 onClick={() => onDecreasePizzaCount(pizza.id)}
@@ -51,7 +55,7 @@ function BasketList() {
               <b>{pizza.count}</b>
               <button
                 className={cx(
-                  "button button--outline button--circle",
+                  'button button--outline button--circle',
                   s.item__count_plus
                 )}
                 onClick={() => onIncreasePizzaCount(pizza.id)}
@@ -63,7 +67,10 @@ function BasketList() {
               <b>{pizza.sum} ₽</b>
             </div>
             <div className={s.item__remove}>
-              <button className="button button--outline button--circle">
+              <button
+                className="button button--outline button--circle"
+                onClick={() => onRemovePizza(pizza.id)}
+              >
                 <Icon icon="cross" color="primary" />
               </button>
             </div>
