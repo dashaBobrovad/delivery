@@ -1,4 +1,5 @@
 import { Icon } from "components";
+import { pizzaDoughTypes } from "data/constants/pizza";
 import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
 import { useState } from "react";
@@ -13,8 +14,6 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   const { id, title, imageUrl, types, sizes, price } = pizza;
 
   const dispatch = useTypedDispatch();
-
-  const typesList = ["Тонкое", "толстое"];
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
@@ -48,7 +47,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
               key={index}
               onClick={() => changeActiveType(index)}
             >
-              {typesList[type]}
+              {pizzaDoughTypes[type]}
             </li>
           ))}
         </ul>
