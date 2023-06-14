@@ -3,10 +3,8 @@ import { useTypedSelector } from "data/hooks";
 
 function BasketPage() {
   const basketList = useTypedSelector((state) => state.pizzas.basket.list);
-  const isLoaded =  useTypedSelector((state) => state.pizzas.basket.isLoaded);
-  
+  const isLoaded = useTypedSelector((state) => state.pizzas.basket.isLoaded);
   const isEmpty = basketList.length === 0;
-
 
   return (
     <>

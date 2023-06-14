@@ -9,11 +9,10 @@ import {
 import cx from "classnames";
 import s from "./BasketPizza.module.scss";
 
-
-interface IBasketBlockProps{
+interface IBasketBlockProps {
   pizza: IPizza;
 }
-function BasketBlock({pizza}: IBasketBlockProps) {
+function BasketBlock({ pizza }: IBasketBlockProps) {
   const dispatch = useTypedDispatch();
 
   const onIncreasePizzaCount = (id: number) => {

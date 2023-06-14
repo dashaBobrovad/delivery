@@ -1,9 +1,9 @@
 import { pizzaCategories } from "data/constants/pizza";
 import React, { useState } from "react";
 import s from "./Categories.module.scss";
+import cx from "classnames";
 
 function Categories() {
-
   const [active, setActive] = useState(0);
 
   function onActiveClick(index: number) {
@@ -11,7 +11,7 @@ function Categories() {
   }
 
   return (
-    <div className={s.categories}>
+    <div className={cx("swipe", s.categories)}>
       <ul className={s.list}>
         {pizzaCategories.map((category, index) => (
           <li

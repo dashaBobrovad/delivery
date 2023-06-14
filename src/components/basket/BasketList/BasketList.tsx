@@ -9,7 +9,6 @@ interface IBasketListProps {
 }
 
 function BasketList({ list, isLoaded }: IBasketListProps) {
-  
   const plugArray = Array(5).fill(null);
 
   return (

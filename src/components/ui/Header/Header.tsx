@@ -6,7 +6,7 @@ import { useTypedSelector } from "data/hooks";
 function Header() {
   const basketCount = useTypedSelector((state) => state.pizzas.basket.count);
   const basketSum = useTypedSelector((state) => state.pizzas.basket.sum);
-  const isLoaded =  useTypedSelector((state) => state.pizzas.basket.isLoaded);
+  const isLoaded = useTypedSelector((state) => state.pizzas.basket.isLoaded);
 
   return (
     <div className={s.header}>
@@ -20,7 +20,7 @@ function Header() {
         </Link>
         <div>
           <Link to="/basket" className="button button--cart">
-            <span>{isLoaded ? basketSum : "	—"} ₽</span>
+            <span>{isLoaded ? basketSum : "	—"}&nbsp;₽</span>
             <div className="button__delimiter"></div>
             <Icon icon="basket" />
             <span>{isLoaded ? basketCount : "—"}</span>

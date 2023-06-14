@@ -34,5 +34,5 @@ export {
   BasketList,
   BasketFooter,
   BasketPizza,
-  BasketPizzaSkeleton
+  BasketPizzaSkeleton,
 };

@@ -5,7 +5,7 @@ import { IPizza } from "types";
 
 export interface IPizzaState {
   pizzas: { list: IPizza[]; isLoaded: boolean };
-  basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean  };
+  basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
