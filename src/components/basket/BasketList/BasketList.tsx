@@ -5,10 +5,11 @@ import { IPizza } from "types";
 
 interface IBasketListProps {
   list: IPizza[];
+  isLoaded: boolean;
 }
 
-function BasketList({ list }: IBasketListProps) {
-  const isLoaded = false;
+function BasketList({ list, isLoaded }: IBasketListProps) {
+  
   const plugArray = Array(5).fill(null);
 
   return (

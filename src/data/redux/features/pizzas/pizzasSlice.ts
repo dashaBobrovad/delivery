@@ -5,7 +5,7 @@ import { IPizza } from "types";
 
 export interface IPizzaState {
   pizzas: { list: IPizza[]; isLoaded: boolean };
-  basket: { list: IPizza[]; count: number; sum: number };
+  basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean  };
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
@@ -13,7 +13,7 @@ export type AddToBasketAction = PayloadAction<number>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
 export type RemovePizzaAction = PayloadAction<number>;
-export type SetIsLoadedAction = PayloadAction<boolean>;
+export type SetIsPizzaListLoadedAction = PayloadAction<boolean>;
 
 const initialState: IPizzaState = {
   pizzas: { list: [], isLoaded: false },
@@ -21,6 +21,7 @@ const initialState: IPizzaState = {
     list: [],
     count: 0,
     sum: 0,
+    isLoaded: true,
   },
 };
 
@@ -31,7 +32,7 @@ export const pizzasSlice = createSlice({
     get: (state, action: PizzaAction) => {
       state.pizzas.list = action.payload;
     },
-    setIsLoaded: (state, action: SetIsLoadedAction) => {
+    setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
@@ -113,7 +114,7 @@ export const pizzasSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   get,
-  setIsLoaded,
+  setIsPizzaListLoaded,
   addToBasket,
   increasePizzaCount,
   decreasePizzaCount,
