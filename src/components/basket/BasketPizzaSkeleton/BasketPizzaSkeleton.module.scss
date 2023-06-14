@@ -1,0 +1,71 @@
+@import "../../../scss/components/skeleton";
+@import "../../../scss/variables";
+
+$marginRight: 15px;
+
+.skeleton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid $gray-line;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: $marginRight;
+}
+
+.info {
+  margin-right: 12px;
+  width: calc(40% - $marginRight);
+  flex-shrink: 0;
+  .line {
+    width: 100%;
+    border-radius: $radius;
+    &:first-child {
+      height: 27px;
+      margin-bottom: 5px;
+    }
+    &:last-child {
+      height: 24px;
+    }
+  }
+}
+
+.actions {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  .btns {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: space-between;
+    .btn:first-child {
+      margin-right: 5px;
+    }
+    .number {
+      width: 14px; margin-right: 5px;
+      height: 30px;
+      border-radius: $radius;
+    }
+  }
+
+  .btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .price {
+    width: 80px;
+    height: 30px;
+    border-radius: $radius;
+  }
+}
