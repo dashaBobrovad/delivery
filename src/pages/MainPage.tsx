@@ -4,7 +4,7 @@ import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 
 function MainPage() {
-  const plugArray = Array(1).fill(null);
+  const plugArray = Array(10).fill(null);
   const dispatch = useTypedDispatch();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
