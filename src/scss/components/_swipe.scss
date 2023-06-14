@@ -1,4 +1,6 @@
-@media all and (max-width: 758px) {
+@import "../mixins";
+
+@include media(m) {
   .swipe {
     critical: this;
     position: relative; /* for right padding */

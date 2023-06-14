@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 .header {
   border-bottom: 1px solid $gray-line;
@@ -9,11 +10,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include media(m) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .logo {
   display: flex;
-
+  @include media(m) {
+    margin-bottom: 15px;
+  }
   svg {
     margin-right: 15px;
     width: 38px;
