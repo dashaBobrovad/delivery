@@ -26,7 +26,7 @@ function MainPage() {
           ? pizzas.list.map((pizza, index) => (
               <PizzaBlock pizza={pizza} key={pizza.id} />
             ))
-          : plugArray.map((index) => <PizzaSkeleton key={index} />)}
+          : plugArray.map((item, index) => <PizzaSkeleton key={index} />)}
       </div>
     </div>
   );
