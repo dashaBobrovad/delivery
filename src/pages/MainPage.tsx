@@ -22,13 +22,11 @@ function MainPage() {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {plugArray.map((index) => (
-          <PizzaSkeleton key={index} />
-        ))}
-
-        {pizzas.map((pizza, index) => (
-          <PizzaBlock pizza={pizza} key={pizza.id} />
-        ))}
+        {pizzas.isLoaded
+          ? pizzas.list.map((pizza, index) => (
+              <PizzaBlock pizza={pizza} key={pizza.id} />
+            ))
+          : plugArray.map((index) => <PizzaSkeleton key={index} />)}
       </div>
     </div>
   );
