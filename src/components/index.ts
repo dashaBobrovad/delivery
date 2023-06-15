@@ -15,6 +15,8 @@ import PizzaSkeleton from "./pizza/PizzaSkeleton/PizzaSkeleton";
 import BasketEmpty from "./basket/BasketEmpty/BasketEmpty";
 import BasketList from "./basket/BasketList/BasketList";
 import BasketFooter from "./basket/BasketFooter/BasketFooter";
+import BasketPizza from "./basket/BasketPizza/BasketPizza";
+import BasketPizzaSkeleton from "./basket/BasketPizzaSkeleton/BasketPizzaSkeleton";
 
 export {
   Sprite,
@@ -31,4 +33,6 @@ export {
   BasketEmpty,
   BasketList,
   BasketFooter,
+  BasketPizza,
+  BasketPizzaSkeleton,
 };

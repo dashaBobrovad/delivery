@@ -1,7 +1,12 @@
 @import "../../../scss/variables";
 @import "../../../scss/libs/normalize";
+@import "../../../scss/components/swipe";
+@import "../../../scss/mixins";
 
 .category {
+  @include media(m){
+    margin-bottom: 15px;
+  }
 }
 
 .list {

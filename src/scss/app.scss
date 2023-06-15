@@ -2,6 +2,7 @@
 @import "./libs/normalize";
 
 @import "./components/all";
+@import "./mixins";
 
 body {
   background-color: $background;
@@ -33,6 +34,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include media(m) {
+      display: block;
+    }
   }
 }
 

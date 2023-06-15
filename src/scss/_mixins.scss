@@ -1,0 +1,7 @@
+@mixin media($breakpoint) {
+  @if $breakpoint == m {
+    @media only screen and (max-width: 768px) {
+      @content;
+    }
+  }
+}

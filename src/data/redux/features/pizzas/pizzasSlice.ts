@@ -1,10 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { IPizza } from 'types';
+import { createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { type } from "os";
+import { IPizza } from "types";
 
 export interface IPizzaState {
-  pizzas: IPizza[];
-  basket: { list: IPizza[]; count: number; sum: number };
+  pizzas: { list: IPizza[]; isLoaded: boolean };
+  basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
@@ -12,22 +13,27 @@ export type AddToBasketAction = PayloadAction<number>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
 export type RemovePizzaAction = PayloadAction<number>;
+export type SetIsPizzaListLoadedAction = PayloadAction<boolean>;
 
 const initialState: IPizzaState = {
-  pizzas: [],
+  pizzas: { list: [], isLoaded: false },
   basket: {
     list: [],
     count: 0,
     sum: 0,
+    isLoaded: true,
   },
 };
 
 export const pizzasSlice = createSlice({
-  name: 'pizzas',
+  name: "pizzas",
   initialState,
   reducers: {
     get: (state, action: PizzaAction) => {
-      state.pizzas = action.payload;
+      state.pizzas.list = action.payload;
+    },
+    setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
+      state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
       // TODO: неправильно считается сумма
@@ -42,7 +48,7 @@ export const pizzasSlice = createSlice({
           (state.basket.list[idx].sum as number) + state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
       } else {
-        const foundPizza = state.pizzas.find(
+        const foundPizza = state.pizzas.list.find(
           (pizza) => pizza.id === action.payload
         );
         if (foundPizza)
@@ -108,6 +114,7 @@ export const pizzasSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   get,
+  setIsPizzaListLoaded,
   addToBasket,
   increasePizzaCount,
   decreasePizzaCount,

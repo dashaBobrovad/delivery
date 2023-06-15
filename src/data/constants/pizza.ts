@@ -1,7 +1,7 @@
 // типы теста для пиццы
 export enum EPizzaDoughTypes {
-  THIN = 'Тонкое',
-  THICK = 'Толстое',
+  THIN = "Тонкое",
+  THICK = "Толстое",
 }
 
 const pizzaDoughTypes: EPizzaDoughTypes[] = [
@@ -11,12 +11,12 @@ const pizzaDoughTypes: EPizzaDoughTypes[] = [
 
 // категории пицц
 export enum EPizzaCategories {
-  ALL = 'Все',
-  MEAT = 'Мясные',
-  VEGAN = 'Вегетарианские',
-  GRILL = 'Гриль',
-  SPICY = 'Острые',
-  CLOSED = 'Закрытые',
+  ALL = "Все",
+  MEAT = "Мясные",
+  VEGAN = "Вегетарианские",
+  GRILL = "Гриль",
+  SPICY = "Острые",
+  CLOSED = "Закрытые",
 }
 
 const pizzaCategories: EPizzaCategories[] = [

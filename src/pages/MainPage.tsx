@@ -4,7 +4,7 @@ import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 
 function MainPage() {
-  const plugArray = Array(1).fill(null);
+  const plugArray = Array(10).fill(null);
   const dispatch = useTypedDispatch();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
@@ -22,13 +22,11 @@ function MainPage() {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-        {plugArray.map((index) => (
-          <PizzaSkeleton key={index} />
-        ))}
-
-        {pizzas.map((pizza, index) => (
-          <PizzaBlock pizza={pizza} key={pizza.id} />
-        ))}
+        {pizzas.isLoaded
+          ? pizzas.list.map((pizza, index) => (
+              <PizzaBlock pizza={pizza} key={pizza.id} />
+            ))
+          : plugArray.map((item, index) => <PizzaSkeleton key={index} />)}
       </div>
     </div>
   );
