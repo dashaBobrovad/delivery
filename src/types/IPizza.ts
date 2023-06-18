@@ -13,4 +13,8 @@ export interface IPizza {
   sum?: number;
 }
 
+export interface IPizzaBasket extends IPizza {
+  count: number;
+  sum: number;
+}
 export default IPizza;
