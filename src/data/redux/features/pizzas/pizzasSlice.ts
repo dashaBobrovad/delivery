@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { IPizza } from "types";
-import { IPizzaBasket } from "types/IPizza";
+import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
   pizzas: { list: IPizza[]; isLoaded: boolean };
