@@ -5,7 +5,6 @@ import cx from "classnames";
 import { pizzaCategories } from "data/constants/pizza";
 import s from "./Categories.module.scss";
 
-
 function Categories() {
   const [active, setActive] = useState(0);
 

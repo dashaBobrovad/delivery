@@ -44,7 +44,8 @@ export const pizzasSlice = createSlice({
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
         state.basket.list[idx].sum =
-          (state.basket.list[idx] as IPizzaBasket).sum + state.basket.list[idx].price;
+          (state.basket.list[idx] as IPizzaBasket).sum +
+          state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
       } else {
         const foundPizza = state.pizzas.list.find(
@@ -68,7 +69,8 @@ export const pizzasSlice = createSlice({
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
         state.basket.list[idx].sum =
-          (state.basket.list[idx] as IPizzaBasket).sum + state.basket.list[idx].price;
+          (state.basket.list[idx] as IPizzaBasket).sum +
+          state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
         state.basket.count += 1;
       }

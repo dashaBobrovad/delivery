@@ -1,3 +1,3 @@
-import {IPizza, IPizzaBasket} from "./IPizza";
+import { IPizza, IPizzaBasket } from "./IPizza";
 
 export type { IPizza, IPizzaBasket };
