@@ -1,5 +1,6 @@
-import { BasketPage, MainPage, NotFoundPage } from "pages";
 import { Route, Routes } from "react-router-dom";
+
+import { BasketPage, MainPage, NotFoundPage } from "pages";
 
 function Routing() {
   return (

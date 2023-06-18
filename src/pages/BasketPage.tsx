@@ -1,5 +1,5 @@
-import { BasketEmpty, BasketFooter, BasketList } from "components";
 import { useTypedSelector } from "data/hooks";
+import { BasketEmpty, BasketFooter, BasketList } from "components";
 
 function BasketPage() {
   const basketList = useTypedSelector((state) => state.pizzas.basket.list);

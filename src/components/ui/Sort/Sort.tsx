@@ -1,5 +1,6 @@
+import { useState } from "react";
+
 import { Icon } from "components";
-import React, { useState } from "react";
 import s from "./Sort.module.scss";
 
 function Sort() {

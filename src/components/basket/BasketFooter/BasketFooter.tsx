@@ -1,8 +1,9 @@
-import s from "./BasketFooter.module.scss";
 import cx from "classnames";
-import { Icon } from "components";
 import { Link } from "react-router-dom";
+
 import { useTypedSelector } from "data/hooks";
+import { Icon } from "components";
+import s from "./BasketFooter.module.scss";
 
 function BasketFooter() {
   const basketCount = useTypedSelector((state) => state.pizzas.basket.count);

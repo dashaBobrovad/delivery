@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
+
+import { useTypedSelector } from "data/hooks";
 import { Icon } from "components";
 import s from "./Header.module.scss";
-import { Link } from "react-router-dom";
-import { useTypedSelector } from "data/hooks";
 
 function Header() {
   const basketCount = useTypedSelector((state) => state.pizzas.basket.count);

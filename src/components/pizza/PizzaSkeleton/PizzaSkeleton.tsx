@@ -1,5 +1,5 @@
-import s from "./PizzaSkeleton.module.scss";
 import cx from "classnames";
+import s from "./PizzaSkeleton.module.scss";
 
 function PizzaSkeleton() {
   return (

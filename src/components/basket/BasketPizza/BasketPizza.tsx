@@ -1,3 +1,5 @@
+import cx from "classnames";
+
 import { useTypedDispatch } from "data/hooks";
 import { IPizza } from "types";
 import { Icon } from "components";
@@ -6,7 +8,6 @@ import {
   increasePizzaCount,
   removePizza,
 } from "data/redux/features/pizzas/pizzasSlice";
-import cx from "classnames";
 import s from "./BasketPizza.module.scss";
 
 interface IBasketBlockProps {

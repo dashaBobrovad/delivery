@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import pizzasReducer from "./features/pizzas/pizzasSlice";
 
 function saveToLocalStorage(state: RootState) {

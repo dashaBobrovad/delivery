@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+
 import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
