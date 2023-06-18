@@ -1,6 +1,6 @@
 import { EPizzaSizes } from "data/constants/pizza";
 
-export interface IPizza {
+interface IPizza {
   id: number;
   imageUrl: string;
   title: string;
@@ -13,4 +13,8 @@ export interface IPizza {
   sum?: number;
 }
 
-export default IPizza;
+interface IPizzaBasket extends IPizza {
+  count: number;
+  sum: number;
+}
+export type {IPizza, IPizzaBasket};

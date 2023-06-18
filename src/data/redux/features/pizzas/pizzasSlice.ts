@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { type } from "os";
-import { IPizza } from "types";
+import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
   pizzas: { list: IPizza[]; isLoaded: boolean };
@@ -36,16 +35,15 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // TODO: неправильно считается сумма
       let idx = state.basket.list.findIndex(
         (item) => item.id === action.payload
       );
       if (idx !== -1) {
         // если пицца есть в корзине, прибавляем кол-во
         state.basket.list[idx].count =
-          (state.basket.list[idx].count as number) + 1;
+          (state.basket.list[idx] as IPizzaBasket).count + 1;
         state.basket.list[idx].sum =
-          (state.basket.list[idx].sum as number) + state.basket.list[idx].price;
+          (state.basket.list[idx] as IPizzaBasket).sum + state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
       } else {
         const foundPizza = state.pizzas.list.find(
@@ -57,7 +55,7 @@ export const pizzasSlice = createSlice({
             count: 1,
             sum: foundPizza.price,
           });
-        state.basket.sum += foundPizza?.price as number;
+        state.basket.sum += (foundPizza as IPizzaBasket)?.price;
       }
       state.basket.count += 1;
     },
@@ -67,9 +65,9 @@ export const pizzasSlice = createSlice({
       );
       if (idx !== -1) {
         state.basket.list[idx].count =
-          (state.basket.list[idx].count as number) + 1;
+          (state.basket.list[idx] as IPizzaBasket).count + 1;
         state.basket.list[idx].sum =
-          (state.basket.list[idx].sum as number) + state.basket.list[idx].price;
+          (state.basket.list[idx] as IPizzaBasket).sum + state.basket.list[idx].price;
         state.basket.sum = state.basket.sum + state.basket.list[idx].price;
         state.basket.count += 1;
       }
@@ -79,12 +77,12 @@ export const pizzasSlice = createSlice({
         (item) => item.id === action.payload
       );
       if (idx !== -1) {
-        if ((state.basket.list[idx].count as number) > 1) {
+        if ((state.basket.list[idx] as IPizzaBasket).count > 1) {
           state.basket.list[idx].count =
-            (state.basket.list[idx].count as number) - 1;
+            (state.basket.list[idx] as IPizzaBasket).count - 1;
 
           state.basket.list[idx].sum =
-            (state.basket.list[idx].sum as number) -
+            (state.basket.list[idx] as IPizzaBasket).sum -
             state.basket.list[idx].price;
 
           state.basket.count -= 1;
@@ -102,9 +100,9 @@ export const pizzasSlice = createSlice({
 
       if (idx !== -1) {
         state.basket.count =
-          state.basket.count - (state.basket.list[idx]?.count as number);
+          state.basket.count - (state.basket.list[idx] as IPizzaBasket)?.count;
         state.basket.sum =
-          state.basket.sum - (state.basket.list[idx].sum as number);
+          state.basket.sum - (state.basket.list[idx] as IPizzaBasket).sum;
       }
       state.basket.list.splice(idx, 1);
     },
