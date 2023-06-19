@@ -39,10 +39,6 @@
         "no-tabs": ["error", { "allowIndentationTabs": true }],
         "no-console": "off",
         "comma-dangle": "off",
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
         "quotes": [
             "error",
             "double"
@@ -63,6 +59,8 @@
               "tsx": "never"
             }
          ],
+         "import/no-extraneous-dependencies": "off",
+         "no-param-reassign": ["error", { "props": false }],
          "no-confusing-arrow": [0],
          "object-curly-newline": 0,
           // Note: you must disable the base rule as it can report incorrect errors

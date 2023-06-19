@@ -36,7 +36,7 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      let idx = state.basket.list.findIndex(
+      const idx = state.basket.list.findIndex(
         (item) => item.id === action.payload
       );
       if (idx !== -1) {
@@ -46,7 +46,7 @@ export const pizzasSlice = createSlice({
         state.basket.list[idx].sum =
           (state.basket.list[idx] as IPizzaBasket).sum +
           state.basket.list[idx].price;
-        state.basket.sum = state.basket.sum + state.basket.list[idx].price;
+        state.basket.sum += state.basket.list[idx].price;
       } else {
         const foundPizza = state.pizzas.list.find(
           (pizza) => pizza.id === action.payload
@@ -57,7 +57,7 @@ export const pizzasSlice = createSlice({
             count: 1,
             sum: foundPizza.price,
           });
-        state.basket.sum += (foundPizza as IPizzaBasket)?.price;
+        state.basket.sum += (foundPizza as IPizzaBasket)?.price || 0;
       }
       state.basket.count += 1;
     },
@@ -71,7 +71,7 @@ export const pizzasSlice = createSlice({
         state.basket.list[idx].sum =
           (state.basket.list[idx] as IPizzaBasket).sum +
           state.basket.list[idx].price;
-        state.basket.sum = state.basket.sum + state.basket.list[idx].price;
+        state.basket.sum += state.basket.list[idx].price;
         state.basket.count += 1;
       }
     },
@@ -102,10 +102,9 @@ export const pizzasSlice = createSlice({
       );
 
       if (idx !== -1) {
-        state.basket.count =
-          state.basket.count - (state.basket.list[idx] as IPizzaBasket)?.count;
-        state.basket.sum =
-          state.basket.sum - (state.basket.list[idx] as IPizzaBasket).sum;
+        state.basket.count -=
+          (state.basket.list[idx] as IPizzaBasket)?.count || 0;
+        state.basket.sum -= (state.basket.list[idx] as IPizzaBasket).sum;
       }
       state.basket.list.splice(idx, 1);
     },
