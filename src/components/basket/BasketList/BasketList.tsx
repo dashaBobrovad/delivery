@@ -1,7 +1,6 @@
-import s from "./BasketList.module.scss";
 import { BasketPizza, BasketPizzaSkeleton } from "components";
-
 import { IPizza } from "types";
+import s from "./BasketList.module.scss";
 
 interface IBasketListProps {
   list: IPizza[];

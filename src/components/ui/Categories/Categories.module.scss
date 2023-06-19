@@ -4,7 +4,7 @@
 @import "../../../scss/mixins";
 
 .category {
-  @include media(m){
+  @include media(m) {
     margin-bottom: 15px;
   }
 }

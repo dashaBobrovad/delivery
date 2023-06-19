@@ -1,5 +1,5 @@
-import s from "./Icon.module.scss";
 import cx from "classnames";
+import s from "./Icon.module.scss";
 
 interface IIconProps {
   classNames?: string;

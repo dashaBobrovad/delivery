@@ -1,0 +1,82 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/jsx-runtime",
+        "react-app",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended", // for html
+        "plugin:import/recommended",
+        "airbnb", // codestyle
+        "prettier"
+    ],
+    "overrides": [
+        {
+            "files": [
+              "./src/data/reducers/**/*.ts"
+            ],
+            "rules": {
+              "default-param-last" : "off"
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "indent": "off",
+        "no-tabs": ["error", { "allowIndentationTabs": true }],
+        "no-console": "off",
+        "comma-dangle": "off",
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+              "js": "never",
+              "jsx": "never",
+              "ts": "never",
+              "tsx": "never"
+            }
+         ],
+         "no-confusing-arrow": [0],
+         "object-curly-newline": 0,
+          // Note: you must disable the base rule as it can report incorrect errors
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "off" ,
+        
+        "@typescript-eslint/no-unused-vars": "error",
+        "react/jsx-props-no-spreading": "off"
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          }
+        }
+    }
+}

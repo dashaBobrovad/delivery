@@ -1,8 +1,9 @@
+import { useState } from "react";
+
 import { Icon } from "components";
 import { pizzaDoughTypes } from "data/constants/pizza";
 import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
-import { useState } from "react";
 import { IPizza } from "types";
 import s from "./PizzaBlock.module.scss";
 

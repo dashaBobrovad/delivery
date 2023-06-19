@@ -17,4 +17,4 @@ interface IPizzaBasket extends IPizza {
   count: number;
   sum: number;
 }
-export type {IPizza, IPizzaBasket};
+export type { IPizza, IPizzaBasket };

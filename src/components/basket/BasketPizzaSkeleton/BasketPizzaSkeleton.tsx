@@ -1,5 +1,5 @@
-import s from "./BasketPizzaSkeleton.module.scss";
 import cx from "classnames";
+import s from "./BasketPizzaSkeleton.module.scss";
 
 function BasketPizzaSkeleton() {
   return (

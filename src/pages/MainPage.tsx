@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
+
 import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
+import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 
 function MainPage() {
   const plugArray = Array(10).fill(null);
