@@ -4,7 +4,7 @@
   "semi": true,
   "singleQuote": false,
   "bracketSpacing": true,
-  "endOfLine": "crlf",
+  "endOfLine": "auto",
   "padding-line-between-statements": [
     { "blankLine": "always", "prev": "*", "next": "*" }
   ]
