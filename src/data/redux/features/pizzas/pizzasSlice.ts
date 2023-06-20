@@ -41,19 +41,21 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // TODO: не плюсуется кол-во общее, если сменить тип текста
       const idx = state.basket.list.findIndex(
-        (item) =>
-          item.id === action.payload.id && item.type === action.payload.type
+        (item) => item.id === action.payload.id
       );
       if (idx !== -1) {
-        // если пицца есть в корзине, прибавляем кол-во
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
-        state.basket.list[idx].sum =
-          (state.basket.list[idx] as IPizzaBasket).sum +
-          state.basket.list[idx].price;
-        state.basket.sum += state.basket.list[idx].price;
+        const idxType = state.basket.list.findIndex(
+          (item) => item.type === action.payload.type
+        );
+        if (idxType !== -1) {
+          state.basket.list[idx].sum =
+            (state.basket.list[idx] as IPizzaBasket).sum +
+            state.basket.list[idx].price;
+          state.basket.sum += state.basket.list[idx].price;
+        }
       } else {
         const foundPizza = state.pizzas.list.find(
           (pizza) => pizza.id === action.payload.id
