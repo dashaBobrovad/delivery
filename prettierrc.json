@@ -2,7 +2,7 @@
   "trailingComma": "es5",
   "tabWidth": 2,
   "semi": true,
-  "singleQuote": true,
+  "singleQuote": false,
   "bracketSpacing": true,
   "endOfLine": "auto",
   "padding-line-between-statements": [
