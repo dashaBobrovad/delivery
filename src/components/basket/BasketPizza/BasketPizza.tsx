@@ -1,6 +1,7 @@
 import cx from "classnames";
 
 import { useTypedDispatch } from "data/hooks";
+import { pizzaDoughTypes } from "data/constants/pizza";
 import { IPizza } from "types";
 import { Icon } from "components";
 import {
@@ -36,22 +37,24 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
       </div>
       <div className={s.pizza__info}>
         <h3>{pizza.title}</h3>
-        <p>__ тесто, __ см.</p>
+        <p>{pizzaDoughTypes[pizza.type as number]} тесто, __ см.</p>
       </div>
       <div className={s.pizza__count}>
         <button
+          type="button"
           className={cx(
             "button button--outline button--circle",
             s.pizza__count_minus
           )}
           onClick={() => onDecreasePizzaCount(pizza.id)}
           // TODO fx as number everywhere !
-          disabled={(pizza.count as number) <= 1 ? true : false}
+          disabled={(pizza.count as number) <= 1}
         >
           <Icon icon="minus" color="primary" />
         </button>
         <b>{pizza.count}</b>
         <button
+          type="button"
           className={cx(
             "button button--outline button--circle",
             s.pizza__count_plus
@@ -66,6 +69,7 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
       </div>
       <div className={s.pizza__remove}>
         <button
+          type="button"
           className="button button--outline button--circle"
           onClick={() => onRemovePizza(pizza.id)}
         >

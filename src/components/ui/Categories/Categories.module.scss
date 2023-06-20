@@ -11,7 +11,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  @include media(d){
+  @include media(d) {
     margin-right: 15px;
   }
 }

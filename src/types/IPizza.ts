@@ -11,10 +11,12 @@ interface IPizza {
   rating: number;
   count?: number;
   sum?: number;
+  type?: number;
 }
 
 interface IPizzaBasket extends IPizza {
   count: number;
   sum: number;
+  type: number; // TODO: 0|1
 }
 export type { IPizza, IPizzaBasket };

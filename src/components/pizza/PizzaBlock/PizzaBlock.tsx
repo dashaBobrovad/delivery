@@ -4,8 +4,9 @@ import nextId from "react-id-generator";
 
 import { Icon } from "components";
 import { pizzaDoughTypes } from "data/constants/pizza";
-import { useTypedSelector } from "data/hooks";
+import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { IPizza } from "types";
+import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
 import s from "./PizzaBlock.module.scss";
 
 interface IPizzaBlockProps {
@@ -14,6 +15,8 @@ interface IPizzaBlockProps {
 
 function PizzaBlock({ pizza }: IPizzaBlockProps) {
   const { id, title, imageUrl, types, sizes, price } = pizza;
+
+  const dispatch = useTypedDispatch();
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
@@ -28,6 +31,8 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
 
   const onAddToBasket = () => {
     console.log(activeType);
+
+    dispatch(addToBasket({ id, type: activeType }));
   };
 
   const basketPizza = useTypedSelector((state) =>
