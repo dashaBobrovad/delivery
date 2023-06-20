@@ -11,6 +11,7 @@ export interface IPizzaState {
 interface AddToBasketPayload {
   id: number;
   type: number;
+  size: number;
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
@@ -47,6 +48,7 @@ export const pizzasSlice = createSlice({
       if (idx !== -1) {
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
+
         const idxType = state.basket.list.findIndex(
           (item) => item.type === action.payload.type
         );
@@ -56,6 +58,15 @@ export const pizzasSlice = createSlice({
             state.basket.list[idx].price;
           state.basket.sum += state.basket.list[idx].price;
         }
+
+        // tODO: отрабатывает только с самым первым размером - нужно еще учитывать, чт оесть не только разные размеры, но и разное тесто
+        // const idxSize = state.basket.list.findIndex((item) => item.size === action.payload.size);
+        // if(idxSize !== -1){
+        //   state.basket.list[idx].sum =
+        //     (state.basket.list[idx] as IPizzaBasket).sum +
+        //     state.basket.list[idx].price;
+        //   state.basket.sum += state.basket.list[idx].price;
+        // }
       } else {
         const foundPizza = state.pizzas.list.find(
           (pizza) => pizza.id === action.payload.id
@@ -66,6 +77,7 @@ export const pizzasSlice = createSlice({
             count: 1,
             sum: foundPizza.price,
             type: action.payload.type,
+            size: action.payload.size,
           });
         state.basket.sum += (foundPizza as IPizzaBasket)?.price || 0;
       }
