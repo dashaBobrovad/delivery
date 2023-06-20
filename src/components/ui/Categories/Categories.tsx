@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import nextId from "react-id-generator";
 import cx from "classnames";
 
 import { pizzaCategories } from "data/constants/pizza";
@@ -17,11 +18,14 @@ function Categories() {
       <ul className={s.list}>
         {pizzaCategories.map((category, index) => (
           <li
-            key={index}
+            role="tab"
+            tabIndex={0}
+            key={nextId()}
             className={`${s.category} ${
               index === active ? s.category_active : ""
             }`}
             onClick={() => onActiveClick(index)}
+            onKeyDown={() => onActiveClick(index)}
           >
             {category}
           </li>

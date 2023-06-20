@@ -4,13 +4,12 @@
 @import "../../../scss/mixins";
 
 .category {
-  @include media(m) {
-    margin-bottom: 15px;
-  }
+  margin-bottom: 15px;
 }
 
 .list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .category {

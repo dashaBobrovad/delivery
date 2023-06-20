@@ -15,8 +15,6 @@ interface IPizzaBlockProps {
 function PizzaBlock({ pizza }: IPizzaBlockProps) {
   const { id, title, imageUrl, types, sizes, price } = pizza;
 
-  const htmlId = nextId();
-
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
@@ -48,7 +46,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
               className={`${s.item} ${
                 index === activeType ? s.item_active : ""
               }`}
-              key={htmlId}
+              key={nextId()}
               onClick={() => changeActiveType(index)}
               onKeyDown={() => changeActiveType(index)}
             >
@@ -64,7 +62,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
               className={`${s.item} ${
                 index === activeSize ? s.item_active : ""
               }`}
-              key={htmlId}
+              key={nextId()}
               onClick={() => changeActiveSize(index)}
               onKeyDown={() => changeActiveSize(index)}
             >

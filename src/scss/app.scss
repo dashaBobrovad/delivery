@@ -32,7 +32,7 @@ body {
 
   &__top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     @include media(m) {
       display: block;
