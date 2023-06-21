@@ -25,14 +25,26 @@ body {
   }
 
   &__items {
+    display: grid;
+    row-gap: 30px;
+    @include media(m) {
+      grid-template-columns: 1fr;
+    }
+    @include media(d) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 50px;
+    }
+  }
+
+  &C {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
   }
 
   &__top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     @include media(m) {
       display: block;

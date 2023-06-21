@@ -1,3 +1,5 @@
+import nextId from "react-id-generator";
+
 import { BasketPizza, BasketPizzaSkeleton } from "components";
 import { IPizza } from "types";
 import s from "./BasketList.module.scss";
@@ -12,13 +14,13 @@ function BasketList({ list, isLoaded }: IBasketListProps) {
 
   return (
     <div className={s.cart}>
-      <div className="content__items">
+      <div className="content__basketItems">
         {isLoaded
-          ? list.map((pizza, index) => (
+          ? list.map((pizza) => (
               // skeleton is not used now, because the data comes from mocks; use with backend
               <BasketPizza pizza={pizza} />
             ))
-          : plugArray.map((item, index) => <BasketPizzaSkeleton key={index} />)}
+          : plugArray.map(() => <BasketPizzaSkeleton key={nextId()} />)}
       </div>
     </div>
   );

@@ -8,8 +8,14 @@ export interface IPizzaState {
   basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
+interface AddToBasketPayload {
+  id: number;
+  type: number;
+  size: number;
+}
+
 export type PizzaAction = PayloadAction<IPizza[]>;
-export type AddToBasketAction = PayloadAction<number>;
+export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
 export type RemovePizzaAction = PayloadAction<number>;
@@ -37,28 +43,45 @@ export const pizzasSlice = createSlice({
     },
     addToBasket: (state, action: AddToBasketAction) => {
       const idx = state.basket.list.findIndex(
-        (item) => item.id === action.payload
+        (item) => item.id === action.payload.id
       );
       if (idx !== -1) {
-        // если пицца есть в корзине, прибавляем кол-во
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
-        state.basket.list[idx].sum =
-          (state.basket.list[idx] as IPizzaBasket).sum +
-          state.basket.list[idx].price;
-        state.basket.sum += state.basket.list[idx].price;
+
+        const idxType = state.basket.list.findIndex(
+          (item) => item.type === action.payload.type
+        );
+        if (idxType !== -1) {
+          state.basket.list[idx].sum =
+            (state.basket.list[idx] as IPizzaBasket).sum +
+            state.basket.list[idx].price;
+          state.basket.sum += state.basket.list[idx].price;
+        }
+
+        // tODO: отрабатывает только с самым первым размером - нужно еще учитывать, чт оесть не только разные размеры, но и разное тесто
+        // const idxSize = state.basket.list.findIndex((item) => item.size === action.payload.size);
+        // if(idxSize !== -1){
+        //   state.basket.list[idx].sum =
+        //     (state.basket.list[idx] as IPizzaBasket).sum +
+        //     state.basket.list[idx].price;
+        //   state.basket.sum += state.basket.list[idx].price;
+        // }
       } else {
         const foundPizza = state.pizzas.list.find(
-          (pizza) => pizza.id === action.payload
+          (pizza) => pizza.id === action.payload.id
         );
         if (foundPizza)
           state.basket.list.push({
             ...foundPizza,
             count: 1,
             sum: foundPizza.price,
+            type: action.payload.type,
+            size: action.payload.size,
           });
         state.basket.sum += (foundPizza as IPizzaBasket)?.price || 0;
       }
+
       state.basket.count += 1;
     },
     increasePizzaCount: (state, action: IncreasePizzaCountAction) => {

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import nextId from "react-id-generator";
+
 import { Icon } from "components";
 import s from "./Sort.module.scss";
 
@@ -21,7 +23,13 @@ function Sort() {
 
   return (
     <div className={s.sort}>
-      <div className={s.label} onClick={toggleOpen}>
+      <div
+        role="tab"
+        tabIndex={0}
+        className={s.label}
+        onClick={toggleOpen}
+        onKeyDown={toggleOpen}
+      >
         {/* TODO: use Icon */}
         <Icon icon="smallArrow" />
         <b>Сортировка по:</b>
@@ -32,9 +40,12 @@ function Sort() {
           <ul className={s.list}>
             {list.map((item, index) => (
               <li
-                key={index}
+                role="tab"
+                tabIndex={0}
+                key={nextId()}
                 className={`${s.item} ${index === active ? s.item_active : ""}`}
                 onClick={() => onActiveClick(index)}
+                onKeyDown={() => onActiveClick(index)}
               >
                 {item}
               </li>
