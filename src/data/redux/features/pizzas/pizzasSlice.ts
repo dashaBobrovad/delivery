@@ -59,7 +59,7 @@ export const pizzasSlice = createSlice({
           state.basket.sum += state.basket.list[idx].price;
         }
 
-        // tODO: отрабатывает только с самым первым размером - нужно еще учитывать, чт оесть не только разные размеры, но и разное тесто
+        // TODO: отрабатывает только с самым первым размером - нужно еще учитывать, чт оесть не только разные размеры, но и разное тесто
         // const idxSize = state.basket.list.findIndex((item) => item.size === action.payload.size);
         // if(idxSize !== -1){
         //   state.basket.list[idx].sum =
