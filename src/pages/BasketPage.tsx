@@ -1,5 +1,5 @@
 import { useTypedSelector } from "data/hooks";
-import { BasketEmpty, BasketFooter, BasketList } from "components";
+import { BasketEmpty, BasketFooter, BasketHeader, BasketList } from "components";
 
 function BasketPage() {
   const basketList = useTypedSelector((state) => state.pizzas.basket.list);
@@ -11,6 +11,7 @@ function BasketPage() {
       {isEmpty && <BasketEmpty />}
       {!isEmpty && (
         <div className="container container_cart">
+          <BasketHeader />
           <BasketList list={basketList} isLoaded={isLoaded} />
           {isLoaded && <BasketFooter />}
         </div>

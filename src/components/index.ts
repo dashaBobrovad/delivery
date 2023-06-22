@@ -17,6 +17,7 @@ import BasketList from "./basket/BasketList/BasketList";
 import BasketFooter from "./basket/BasketFooter/BasketFooter";
 import BasketPizza from "./basket/BasketPizza/BasketPizza";
 import BasketPizzaSkeleton from "./basket/BasketPizzaSkeleton/BasketPizzaSkeleton";
+import BasketHeader from "./basket/BasketHeader/BasketHeader";
 
 export {
   Sprite,
@@ -35,4 +36,5 @@ export {
   BasketFooter,
   BasketPizza,
   BasketPizzaSkeleton,
+  BasketHeader,
 };

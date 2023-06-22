@@ -131,6 +131,9 @@ export const pizzasSlice = createSlice({
       }
       state.basket.list.splice(idx, 1);
     },
+    cleanBasket: (state) => {
+      state.basket.list = [];
+    }
   },
 });
 
@@ -142,6 +145,7 @@ export const {
   increasePizzaCount,
   decreasePizzaCount,
   removePizza,
+  cleanBasket
 } = pizzasSlice.actions;
 
 export default pizzasSlice.reducer;
