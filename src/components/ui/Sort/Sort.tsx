@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import nextId from "react-id-generator";
 
@@ -7,6 +7,8 @@ import s from "./Sort.module.scss";
 
 function Sort() {
   const list = ["популярности", "цене", "алфавиту"];
+
+  const sortRef = useRef<HTMLInputElement | null>(null);
 
   const [active, setActive] = useState(0);
 
@@ -21,8 +23,19 @@ function Sort() {
     setOpen((prev) => !prev);
   }
 
+  useEffect(() => {
+    document.body.addEventListener("click", (event: Event) => {
+      const path = event.composedPath();
+      if (!path.includes(sortRef.current as HTMLInputElement)) {
+        setOpen(false);
+      } else {
+        toggleOpen();
+      }
+    });
+  }, []);
+
   return (
-    <div className={s.sort}>
+    <div className={s.sort} ref={sortRef}>
       <div
         role="tab"
         tabIndex={0}
@@ -30,7 +43,6 @@ function Sort() {
         onClick={toggleOpen}
         onKeyDown={toggleOpen}
       >
-        {/* TODO: use Icon */}
         <Icon icon="smallArrow" />
         <b>Сортировка по:</b>
         <span>{list[active]}</span>
