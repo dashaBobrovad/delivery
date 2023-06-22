@@ -41,23 +41,24 @@ export const pizzasSlice = createSlice({
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
     },
-    addToBasket: (state, action: AddToBasketAction) => { // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
+    addToBasket: (state, action: AddToBasketAction) => {
+      // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
       const idx = state.basket.list.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id && item.type === action.payload.type
       );
       if (idx !== -1) {
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
 
-        const idxType = state.basket.list.findIndex(
-          (item) => item.type === action.payload.type
-        );
-        if (idxType !== -1) {
-          state.basket.list[idx].sum =
-            (state.basket.list[idx] as IPizzaBasket).sum +
-            state.basket.list[idx].price;
-          state.basket.sum += state.basket.list[idx].price;
-        }
+        // const idxType = state.basket.list.findIndex(
+        //   (item) => item.type === action.payload.type
+        // );
+        // if (idxType !== -1) {
+        //   state.basket.list[idx].sum =
+        //     (state.basket.list[idx] as IPizzaBasket).sum +
+        //     state.basket.list[idx].price;
+        //   state.basket.sum += state.basket.list[idx].price;
+        // }
 
         // TODO: отрабатывает только с самым первым размером - нужно еще учитывать, чт оесть не только разные размеры, но и разное тесто
         // const idxSize = state.basket.list.findIndex((item) => item.size === action.payload.size);
@@ -69,7 +70,7 @@ export const pizzasSlice = createSlice({
         // }
       } else {
         const foundPizza = state.pizzas.list.find(
-          (pizza) => pizza.id === action.payload.id
+          (pizza) => pizza.id === action.payload.id 
         );
         if (foundPizza)
           state.basket.list.push({
@@ -135,7 +136,7 @@ export const pizzasSlice = createSlice({
       state.basket.list = [];
       state.basket.count = 0;
       state.basket.sum = 0;
-    }
+    },
   },
 });
 
@@ -147,7 +148,7 @@ export const {
   increasePizzaCount,
   decreasePizzaCount,
   removePizza,
-  cleanBasket
+  cleanBasket,
 } = pizzasSlice.actions;
 
 export default pizzasSlice.reducer;
