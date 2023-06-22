@@ -41,7 +41,7 @@ export const pizzasSlice = createSlice({
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
     },
-    addToBasket: (state, action: AddToBasketAction) => {
+    addToBasket: (state, action: AddToBasketAction) => { // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
       const idx = state.basket.list.findIndex(
         (item) => item.id === action.payload.id
       );
