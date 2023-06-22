@@ -24,14 +24,18 @@ function Sort() {
   }
 
   useEffect(() => {
-    document.body.addEventListener("click", (event: Event) => {
+    const handleClickOutside = (event: Event) => {
       const path = event.composedPath();
       if (!path.includes(sortRef.current as HTMLInputElement)) {
         setOpen(false);
-      } else {
-        toggleOpen();
       }
-    });
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   return (
