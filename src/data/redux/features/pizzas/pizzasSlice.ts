@@ -133,6 +133,8 @@ export const pizzasSlice = createSlice({
     },
     cleanBasket: (state) => {
       state.basket.list = [];
+      state.basket.count = 0;
+      state.basket.sum = 0;
     }
   },
 });
