@@ -1,7 +1,6 @@
 import cx from "classnames";
 
 import { useTypedDispatch } from "data/hooks";
-import { pizzaDoughTypes, pizzaSizes } from "data/constants/pizza";
 import { IPizza } from "types";
 import { Icon } from "components";
 import {
@@ -38,8 +37,8 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
       <div className={s.pizza__info}>
         <h3>{pizza.title}</h3>
         <p>
-          {pizzaDoughTypes[pizza.type as number]} тесто,{" "}
-          {pizzaSizes[pizza.size as number]} см.
+          {pizza.type || "__"} тесто,{" "}
+          {pizza.size || "__"} см.
         </p>
       </div>
       <div className={s.pizza__count}>
@@ -68,7 +67,7 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
         </button>
       </div>
       <div className={s.pizza__price}>
-        <b>{pizza.sum} ₽</b>
+        <b>{pizza.sum || 0} ₽</b>
       </div>
       <div className={s.pizza__remove}>
         <button
