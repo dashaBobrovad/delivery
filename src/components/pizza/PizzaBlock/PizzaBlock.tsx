@@ -30,6 +30,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   };
 
   const onAddToBasket = () => {
+    console.log(activeType);
     dispatch(addToBasket({ id, type: activeType, size: activeSize }));
   };
 
