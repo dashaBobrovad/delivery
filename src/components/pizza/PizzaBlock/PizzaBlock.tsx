@@ -3,7 +3,7 @@ import { useState } from "react";
 import nextId from "react-id-generator";
 
 import { Icon } from "components";
-import { pizzaDoughTypes } from "data/constants/pizza";
+import { pizzaDoughTypes, pizzaSizes } from "data/constants/pizza";
 import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { IPizza } from "types";
 import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
@@ -30,8 +30,12 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   };
 
   const onAddToBasket = () => {
-    console.log(activeType);
-    dispatch(addToBasket({ id, type: activeType, size: activeSize }));
+   //  dispatch(addToBasket({ id, type: activeType, size: activeSize }));
+   // TODO: не надо передавать все 
+   const item = {
+    id, title, imageUrl, price, type: pizzaDoughTypes[activeType], size: pizzaSizes[activeSize],
+   };
+   dispatch(addToBasket(item));
   };
 
   const basketPizza = useTypedSelector((state) =>
