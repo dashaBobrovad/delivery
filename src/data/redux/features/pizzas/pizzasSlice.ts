@@ -79,8 +79,9 @@ export const pizzasSlice = createSlice({
       // state.basket.sum = state.basket.list.reduce((sum, obj) => obj.price + sum, 0);
       // state.basket.count += 1;
 
-      const foundItem = state.basket.list.find((item) => item.id === action.payload.id);
+      const foundItem = state.basket.list.find((item) => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size);
 
+      // TODO: сейчас размер и тип добавляются правильно - в отдельные пиццы; нужно починить на кнопке добавить 
       if(foundItem){
         foundItem.count =
           (foundItem as IPizzaBasket).count + 1;
@@ -94,6 +95,7 @@ export const pizzasSlice = createSlice({
       state.basket.count += 1;
     },
     increasePizzaCount: (state, action: IncreasePizzaCountAction) => {
+      // TODO: избавиться от этого экшена - доверить все addItem
       const idx = state.basket.list.findIndex(
         (item) => item.id === action.payload
       );
