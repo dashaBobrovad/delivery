@@ -44,41 +44,7 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
-      // // если одинаковое тесто, но разный размер - отдельная пиццв; если один размер, но разное тесто - тоже другая
-      // const idx = state.basket.list.findIndex(
-      //   (item) =>
-      //     item.id === action.payload.id && item.type === action.payload.type
-      //   // || item.id === action.payload.id && item.size === action.payload.size
-      // );
-      // console.log(`idx ${idx}`); // 0 (надо что ли как-то разделить тип теста и размер)
-      // if (idx !== -1) {
-      //   state.basket.list[idx].count =
-      //     (state.basket.list[idx] as IPizzaBasket).count + 1;
-      // } else {
-      //   const foundPizza = state.pizzas.list.find(
-      //     (pizza) => pizza.id === action.payload.id
-      //   );
-      //   if (foundPizza)
-      //     state.basket.list.push({
-      //       ...foundPizza,
-      //       count: 1,
-      //       sum: foundPizza.price,
-      //       type: action.payload.type,
-      //       size: action.payload.size,
-      //     });
-      //   state.basket.sum += (foundPizza as IPizzaBasket)?.price || 0;
-      // }
-
-      // state.basket.count += 1;
-      
-      
-      
-      
-      // state.basket.list.push(action.payload.item);
-      // state.basket.sum = state.basket.list.reduce((sum, obj) => obj.price + sum, 0);
-      // state.basket.count += 1;
-
+     
       const foundItem = state.basket.list.find((item) => item.id === action.payload.id);
 
       if(foundItem){
