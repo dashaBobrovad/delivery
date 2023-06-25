@@ -51,9 +51,6 @@ export const pizzasSlice = createSlice({
       if (idx !== -1) {
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
-
-          state.basket.sum = state.basket.list.reduce((sum, obj: any) => (obj.price * obj.count) + sum, 0);
-          state.basket.count += 1;
       } else {
         const foundPizza = state.pizzas.list.find(
           (pizza) => pizza.id === action.payload.id
@@ -68,7 +65,9 @@ export const pizzasSlice = createSlice({
           });
       }
       
-   
+      state.basket.sum = state.basket.list.reduce((sum, obj) => (obj.price * (obj.count as number)) + sum, 0);
+      state.basket.count += 1;
+      
     },
     increasePizzaCount: (state, action: IncreasePizzaCountAction) => {
       // TODO: избавиться от этого экшена - доверить все addItem
