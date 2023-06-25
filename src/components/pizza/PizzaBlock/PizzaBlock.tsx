@@ -19,8 +19,8 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   const dispatch = useTypedDispatch();
 
   const basketPizza = useTypedSelector((state) => state.pizzas.basket.list);
-  const [pizzaCount, setPizzaCount] = useState<number>(0);
 
+  const [pizzaCount, setPizzaCount] = useState<number>(0);
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
@@ -33,6 +33,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   };
 
   const onAddToBasket = () => {
+    //  dispatch(addToBasket({ id, type: activeType, size: activeSize }));
     // TODO: заменить на id (?)
     const item = {
       id,
@@ -47,9 +48,10 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
 
   useEffect(() => {
     const basketItemsArr = [] as { id: number }[];
-    Object.keys(basketPizza).forEach((el) =>
+    Object.keys(basketPizza).map((el: string) =>
       basketItemsArr.push({
-        id: basketPizza[Number(el)].id,
+        ...basketPizza[+el],
+        id: basketPizza[+el].id,
       })
     );
 

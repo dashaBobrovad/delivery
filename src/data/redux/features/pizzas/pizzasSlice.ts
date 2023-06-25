@@ -44,8 +44,6 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
-      // // если одинаковое тесто, но разный размер - отдельная пиццв; если один размер, но разное тесто - тоже другая
       // const idx = state.basket.list.findIndex(
       //   (item) =>
       //     item.id === action.payload.id && item.type === action.payload.type
