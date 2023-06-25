@@ -33,13 +33,9 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   };
 
   const onAddToBasket = () => {
-    //  dispatch(addToBasket({ id, type: activeType, size: activeSize }));
     // TODO: заменить на id (?)
     const item = {
       id,
-      title,
-      imageUrl,
-      price,
       type: pizzaDoughTypes[activeType],
       size: pizzaSizes[activeSize],
     };
