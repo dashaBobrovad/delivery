@@ -59,7 +59,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     const pizzaCount = filteredArr.reduce((sum, obj: any) => obj.count + sum, 0);
 
     setPizzaCount(pizzaCount);
-  }, [basketPizza]);
+  }, [basketPizza, id]);
 
   return (
     <div className={s.pizza}>
