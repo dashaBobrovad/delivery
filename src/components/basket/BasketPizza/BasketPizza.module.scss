@@ -12,7 +12,6 @@
     display: flex;
     align-items: center;
     margin-right: 15px;
-    width: 10%;
 
     img {
       width: 80px;
@@ -44,7 +43,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 13%;
 
     &_minus {
       svg {
@@ -56,6 +54,7 @@
 
     b {
       font-size: 22px;
+      margin: 0 10px;
     }
   }
 
