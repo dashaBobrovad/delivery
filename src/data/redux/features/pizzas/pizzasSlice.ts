@@ -44,55 +44,30 @@ export const pizzasSlice = createSlice({
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
-      // // https://www.youtube.com/watch?v=RhOvu20t0Go&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=17
-      // // если одинаковое тесто, но разный размер - отдельная пиццв; если один размер, но разное тесто - тоже другая
-      // const idx = state.basket.list.findIndex(
-      //   (item) =>
-      //     item.id === action.payload.id && item.type === action.payload.type
-      //   // || item.id === action.payload.id && item.size === action.payload.size
-      // );
-      // console.log(`idx ${idx}`); // 0 (надо что ли как-то разделить тип теста и размер)
-      // if (idx !== -1) {
-      //   state.basket.list[idx].count =
-      //     (state.basket.list[idx] as IPizzaBasket).count + 1;
-      // } else {
-      //   const foundPizza = state.pizzas.list.find(
-      //     (pizza) => pizza.id === action.payload.id
-      //   );
-      //   if (foundPizza)
-      //     state.basket.list.push({
-      //       ...foundPizza,
-      //       count: 1,
-      //       sum: foundPizza.price,
-      //       type: action.payload.type,
-      //       size: action.payload.size,
-      //     });
-      //   state.basket.sum += (foundPizza as IPizzaBasket)?.price || 0;
-      // }
-
-      // state.basket.count += 1;
-      
-      
-      
-      
-      // state.basket.list.push(action.payload.item);
-      // state.basket.sum = state.basket.list.reduce((sum, obj) => obj.price + sum, 0);
-      // state.basket.count += 1;
-
-      const foundItem = state.basket.list.find((item) => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size);
-
-      // TODO: сейчас размер и тип добавляются правильно - в отдельные пиццы; нужно починить на кнопке добавить 
-      if(foundItem){
-        foundItem.count =
-          (foundItem as IPizzaBasket).count + 1;
+      const idx = state.basket.list.findIndex(
+        (item) => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size
+      );
+    
+      if (idx !== -1) {
+        state.basket.list[idx].count =
+          (state.basket.list[idx] as IPizzaBasket).count + 1;
       } else {
-        state.basket.list.push({...action.payload, count: 1,});
-        
+        const foundPizza = state.pizzas.list.find(
+          (pizza) => pizza.id === action.payload.id
+        );
+        if (foundPizza)
+          state.basket.list.push({
+            ...foundPizza,
+            count: 1,
+            sum: foundPizza.price,
+            type: action.payload.type,
+            size: action.payload.size,
+          });
       }
-
-      // TODO: add types
-      state.basket.sum = state.basket.list.reduce((sum, obj: any) => (obj.price * obj.count) + sum, 0);
+      
+      state.basket.sum = state.basket.list.reduce((sum, obj) => (obj.price * (obj.count as number)) + sum, 0);
       state.basket.count += 1;
+      
     },
     increasePizzaCount: (state, action: IncreasePizzaCountAction) => {
       // TODO: избавиться от этого экшена - доверить все addItem
