@@ -6,6 +6,8 @@ import Icon from "./ui/Icon/Icon";
 import Header from "./ui/Header/Header";
 import Sort from "./ui/Sort/Sort";
 import Categories from "./ui/Categories/Categories";
+import Picture from "./ui/Picture/Picture";
+import Preloader from "./ui/Preloader/Preloader";
 
 // pizza
 import PizzaBlock from "./pizza/PizzaBlock/PizzaBlock";
@@ -27,6 +29,8 @@ export {
   Header,
   Sort,
   Categories,
+  Picture,
+  Preloader,
   // pizza
   PizzaBlock,
   PizzaSkeleton,

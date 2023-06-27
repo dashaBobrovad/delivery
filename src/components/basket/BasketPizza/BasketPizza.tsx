@@ -2,7 +2,7 @@ import cx from "classnames";
 
 import { useTypedDispatch } from "data/hooks";
 import { IPizza } from "types";
-import { Icon } from "components";
+import { Icon, Picture } from "components";
 import {
   decreasePizzaCount,
   increasePizzaCount,
@@ -32,7 +32,7 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
   return (
     <div className={s.pizza} key={pizza.id}>
       <div className={s.pizza__img}>
-        <img src={pizza.imageUrl} alt="Pizza" />
+        <Picture src={pizza.imageUrl} alt="Pizza" parentClass={s.img} />
       </div>
       <div className={s.pizza__info}>
         <h3>{pizza.title}</h3>
