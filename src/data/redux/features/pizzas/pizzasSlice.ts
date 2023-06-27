@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
-  pizzas: { list: IPizza[]; isLoaded: boolean };
+  pizzas: { list: IPizza[]; isLoaded: boolean, filteredList: IPizza[] };
   basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
@@ -16,6 +16,7 @@ export interface IPizzaState {
 // }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
+export type SortPizzaAction = PayloadAction<number>;
 // export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type AddToBasketAction = PayloadAction<any>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
@@ -24,7 +25,7 @@ export type RemovePizzaAction = PayloadAction<number>;
 export type SetIsPizzaListLoadedAction = PayloadAction<boolean>;
 
 const initialState: IPizzaState = {
-  pizzas: { list: [], isLoaded: false },
+  pizzas: { list: [], isLoaded: false, filteredList: [] },
   basket: {
     list: [],
     count: 0,
@@ -39,6 +40,10 @@ export const pizzasSlice = createSlice({
   reducers: {
     get: (state, action: PizzaAction) => {
       state.pizzas.list = action.payload;
+    },
+    sort: (state, action: SortPizzaAction) => {
+      // TODO:сохранять изначально весь стэйт пицц куда-то в другое место
+      state.pizzas.filteredList = state.pizzas.list.filter(item => item.category !== action.payload); 
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
@@ -133,6 +138,7 @@ export const pizzasSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   get,
+  sort,
   setIsPizzaListLoaded,
   addToBasket,
   increasePizzaCount,

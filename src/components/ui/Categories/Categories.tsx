@@ -3,14 +3,19 @@ import { useState } from "react";
 import nextId from "react-id-generator";
 import cx from "classnames";
 
+import { useTypedDispatch } from "data/hooks";
+import { sort } from "data/redux/features/pizzas/pizzasSlice";
 import { pizzaCategories } from "data/constants/pizza";
 import s from "./Categories.module.scss";
 
 function Categories() {
   const [active, setActive] = useState(0);
 
+  const dispatch = useTypedDispatch();
+
   function onActiveClick(index: number) {
      // sorl list dispatch 
+     dispatch(sort(active));
     setActive(index);
   }
 
