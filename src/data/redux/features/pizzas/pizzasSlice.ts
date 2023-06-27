@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
-  pizzas: { list: IPizza[]; isLoaded: boolean, filteredList: IPizza[] };
+  pizzas: { list: IPizza[]; isLoaded: boolean; filteredList: IPizza[] };
   basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
@@ -15,8 +15,13 @@ export interface IPizzaState {
 //   // size: number;
 // }
 
+export interface IPizzaSort {
+  type: string; // enum
+  id: number;
+}
+
 export type PizzaAction = PayloadAction<IPizza[]>;
-export type SortPizzaAction = PayloadAction<number>;
+export type SortPizzaAction = PayloadAction<IPizzaSort>;
 // export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type AddToBasketAction = PayloadAction<any>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
@@ -42,8 +47,17 @@ export const pizzasSlice = createSlice({
       state.pizzas.list = action.payload;
     },
     sort: (state, action: SortPizzaAction) => {
-      // TODO:сохранять изначально весь стэйт пицц куда-то в другое место
-      state.pizzas.filteredList = state.pizzas.list.filter(item => item.category !== action.payload); 
+      switch (action.payload.type) {
+        case "category":
+          console.log("!!!TOOLKIT categoty action ");
+          state.pizzas.filteredList = state.pizzas.list.filter(
+            (item) => item.category !== action.payload.id
+          );
+          break;
+        default:
+          state.pizzas.filteredList = state.pizzas.list;
+          break;
+      }
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
