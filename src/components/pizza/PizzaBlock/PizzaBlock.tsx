@@ -54,7 +54,10 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     const filteredArr = [] as { id: number }[];
     basketItemsArr.forEach((item) => item.id === id && filteredArr.push(item));
 
-    const pizzaCount = filteredArr.reduce((sum, obj: any) => obj.count + sum, 0);
+    const pizzaCount = filteredArr.reduce(
+      (sum, obj: any) => obj.count + sum,
+      0
+    );
 
     setPizzaCount(pizzaCount);
   }, [basketPizza, id]);

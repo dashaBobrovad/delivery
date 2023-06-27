@@ -37,8 +37,7 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
       <div className={s.pizza__info}>
         <h3>{pizza.title}</h3>
         <p>
-          {pizza.type || "__"} тесто,{" "}
-          {pizza.size || "__"} см.
+          {pizza.type || "__"} тесто, {pizza.size || "__"} см.
         </p>
       </div>
       <div className={s.pizza__count}>
