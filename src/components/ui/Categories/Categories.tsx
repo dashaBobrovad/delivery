@@ -13,13 +13,7 @@ function Categories() {
   const [active, setActive] = useState(0);
 
   const dispatch = useTypedDispatch();
-
-  // function onActiveClick(index: number) {
-  //   // sorl list dispatch
-  //   dispatch(sort({ type: "category", id: active }));
-  //   setActive(index);
-  // }
-
+  
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
