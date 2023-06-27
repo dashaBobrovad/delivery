@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
 
+import base64DecodeFn from "utils";
 import {
   get,
   PizzaAction,
@@ -7,7 +8,7 @@ import {
   SetIsPizzaListLoadedAction,
 } from "../features/pizzas/pizzasSlice";
 import pizzasMock from "../../mock";
-import { base64DecodeFn } from "utils";
+
 
 const path = "https://api.github.com/repos/dashaBobrovad/delivery";
 

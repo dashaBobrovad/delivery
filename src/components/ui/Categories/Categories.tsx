@@ -10,6 +10,7 @@ function Categories() {
   const [active, setActive] = useState(0);
 
   function onActiveClick(index: number) {
+     // sorl list dispatch 
     setActive(index);
   }
 
