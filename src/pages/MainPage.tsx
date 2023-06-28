@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import nextId from "react-id-generator";
+
 import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
@@ -9,9 +11,12 @@ function MainPage() {
   const dispatch = useTypedDispatch();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
+  const pizzasList = pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
 
+  
   useEffect(() => {
     // TODO: thunk from toolkit
+    // TODO: посомтреть, правильно ли отрабатывает запрос при первой загрузке страницы (хорошо бы, опять же, делать это через бэк)
     dispatch(fetchPizzas());
   }, []);
 
@@ -24,10 +29,10 @@ function MainPage() {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
         {pizzas.isLoaded
-          ? pizzas.list.map((pizza, index) => (
+          ? pizzasList.map((pizza) => (
               <PizzaBlock pizza={pizza} key={pizza.id} />
             ))
-          : plugArray.map((item, index) => <PizzaSkeleton key={index} />)}
+          : plugArray.map(() => <PizzaSkeleton key={nextId()} />)}
       </div>
     </div>
   );

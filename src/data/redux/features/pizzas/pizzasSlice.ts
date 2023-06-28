@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { IPizza, IPizzaBasket } from "types";
 
 export interface IPizzaState {
-  pizzas: { list: IPizza[]; isLoaded: boolean };
+  pizzas: { list: IPizza[]; isLoaded: boolean; filteredList: IPizza[] };
   basket: { list: IPizza[]; count: number; sum: number; isLoaded: boolean };
 }
 
@@ -15,7 +15,13 @@ export interface IPizzaState {
 //   // size: number;
 // }
 
+export interface IPizzaSort {
+  type: string; // enum
+  id: number;
+}
+
 export type PizzaAction = PayloadAction<IPizza[]>;
+export type SortPizzaAction = PayloadAction<IPizzaSort>;
 // export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type AddToBasketAction = PayloadAction<any>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
@@ -24,7 +30,7 @@ export type RemovePizzaAction = PayloadAction<number>;
 export type SetIsPizzaListLoadedAction = PayloadAction<boolean>;
 
 const initialState: IPizzaState = {
-  pizzas: { list: [], isLoaded: false },
+  pizzas: { list: [], isLoaded: false, filteredList: [] },
   basket: {
     list: [],
     count: 0,
@@ -40,14 +46,30 @@ export const pizzasSlice = createSlice({
     get: (state, action: PizzaAction) => {
       state.pizzas.list = action.payload;
     },
+    sort: (state, action: SortPizzaAction) => {
+      switch (action.payload.type) {
+        case "category":
+          console.log("!!!TOOLKIT categoty action ");
+          state.pizzas.filteredList = state.pizzas.list.filter(
+            (item) => item.category !== action.payload.id
+          );
+          break;
+        default:
+          state.pizzas.filteredList = state.pizzas.list;
+          break;
+      }
+    },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
     },
     addToBasket: (state, action: AddToBasketAction) => {
       const idx = state.basket.list.findIndex(
-        (item) => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size
+        (item) =>
+          item.id === action.payload.id &&
+          item.type === action.payload.type &&
+          item.size === action.payload.size
       );
-    
+
       if (idx !== -1) {
         state.basket.list[idx].count =
           (state.basket.list[idx] as IPizzaBasket).count + 1;
@@ -64,10 +86,12 @@ export const pizzasSlice = createSlice({
             size: action.payload.size,
           });
       }
-      
-      state.basket.sum = state.basket.list.reduce((sum, obj) => (obj.price * (obj.count as number)) + sum, 0);
+
+      state.basket.sum = state.basket.list.reduce(
+        (sum, obj) => obj.price * (obj.count as number) + sum,
+        0
+      );
       state.basket.count += 1;
-      
     },
     increasePizzaCount: (state, action: IncreasePizzaCountAction) => {
       // TODO: избавиться от этого экшена - доверить все addItem
@@ -128,6 +152,7 @@ export const pizzasSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   get,
+  sort,
   setIsPizzaListLoaded,
   addToBasket,
   increasePizzaCount,

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import nextId from "react-id-generator";
 
-import { Icon } from "components";
+import { Icon, Picture } from "components";
 import { pizzaDoughTypes, pizzaSizes } from "data/constants/pizza";
 import { useTypedDispatch, useTypedSelector } from "data/hooks";
 import { IPizza } from "types";
@@ -54,14 +54,17 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     const filteredArr = [] as { id: number }[];
     basketItemsArr.forEach((item) => item.id === id && filteredArr.push(item));
 
-    const pizzaCount = filteredArr.reduce((sum, obj: any) => obj.count + sum, 0);
+    const pizzaCount = filteredArr.reduce(
+      (sum, obj: any) => obj.count + sum,
+      0
+    );
 
     setPizzaCount(pizzaCount);
   }, [basketPizza, id]);
 
   return (
     <div className={s.pizza}>
-      <img className={s.image} src={imageUrl} alt={title} />
+      <Picture parentClass={s.image} src={imageUrl} alt={title} />
       <h4 className={s.title}>{title}</h4>
       <div className={s.selector}>
         <ul className={s.list}>

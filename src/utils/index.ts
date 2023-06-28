@@ -1,3 +1,4 @@
 import base64DecodeFn from "./base64DecodeFn";
+// more helper fns
 
-export { base64DecodeFn };
+export default base64DecodeFn;

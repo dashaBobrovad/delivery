@@ -11,12 +11,12 @@ const pizzaDoughTypes: EPizzaDoughTypes[] = [
 
 // категории пицц
 export enum EPizzaCategories {
-  ALL = "Все",
-  MEAT = "Мясные",
-  VEGAN = "Вегетарианские",
-  GRILL = "Гриль",
-  SPICY = "Острые",
-  CLOSED = "Закрытые",
+  ALL = "Все", // 0
+  MEAT = "Мясные", // 1
+  VEGAN = "Вегетарианские", // 2
+  GRILL = "Гриль", // 3
+  SPICY = "Острые", // 4
+  CLOSED = "Закрытые", // 5
 }
 
 const pizzaCategories: EPizzaCategories[] = [
