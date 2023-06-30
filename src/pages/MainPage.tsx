@@ -11,9 +11,9 @@ function MainPage() {
   const dispatch = useTypedDispatch();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
-  const pizzasList = pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
+  const pizzasList =
+    pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
 
-  
   useEffect(() => {
     // TODO: thunk from toolkit
     // TODO: посомтреть, правильно ли отрабатывает запрос при первой загрузке страницы (хорошо бы, опять же, делать это через бэк)

@@ -13,7 +13,7 @@ function Categories() {
   const [active, setActive] = useState(0);
 
   const dispatch = useTypedDispatch();
-  
+
   const [searchParams] = useSearchParams();
 
   useEffect(() => {

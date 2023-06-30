@@ -9,7 +9,7 @@ const pizzasMock: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 803,
-    category: 0,
+    category: 1,
     rating: 4,
   },
   {
@@ -20,7 +20,7 @@ const pizzasMock: IPizza[] = [
     types: [0],
     sizes: [26, 40],
     price: 245,
-    category: 0,
+    category: 2,
     rating: 6,
   },
   {
@@ -31,7 +31,7 @@ const pizzasMock: IPizza[] = [
     types: [0],
     sizes: [26, 40],
     price: 295,
-    category: 1,
+    category: 4,
     rating: 4,
   },
   {
@@ -42,7 +42,7 @@ const pizzasMock: IPizza[] = [
     types: [1],
     sizes: [26, 30, 40],
     price: 275,
-    category: 2,
+    category: 3,
     rating: 2,
   },
   {
@@ -53,7 +53,7 @@ const pizzasMock: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 415,
-    category: 3,
+    category: 4,
     rating: 8,
   },
   {
@@ -64,7 +64,7 @@ const pizzasMock: IPizza[] = [
     types: [0],
     sizes: [30, 40],
     price: 580,
-    category: 2,
+    category: 4,
     rating: 2,
   },
   {
@@ -86,7 +86,7 @@ const pizzasMock: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 450,
-    category: 4,
+    category: 2,
     rating: 10,
   },
   {
@@ -108,9 +108,8 @@ const pizzasMock: IPizza[] = [
     types: [0, 1],
     sizes: [26, 30, 40],
     price: 285,
-    category: 5,
+    category: 2,
     rating: 7,
   },
 ];
-
 export default pizzasMock;

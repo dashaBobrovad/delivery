@@ -9,7 +9,6 @@ import {
 } from "../features/pizzas/pizzasSlice";
 import pizzasMock from "../../mock";
 
-
 const path = "https://api.github.com/repos/dashaBobrovad/delivery";
 
 const fetchPizzas =
