@@ -47,17 +47,18 @@ export const pizzasSlice = createSlice({
       state.pizzas.list = action.payload;
     },
     sort: (state, action: SortPizzaAction) => {
+      let filteredPizzas = [];
       switch (action.payload.type) {
         case "category":
-          console.log("!!!TOOLKIT categoty action ");
-          state.pizzas.filteredList = state.pizzas.list.filter(
-            (item) => item.category !== action.payload.id
+          filteredPizzas = state.pizzas.list.filter(
+            (item) => item.category === action.payload.id
           );
           break;
         default:
-          state.pizzas.filteredList = state.pizzas.list;
+          filteredPizzas = state.pizzas.list;
           break;
       }
+      state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;

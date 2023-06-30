@@ -1,29 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import nextId from "react-id-generator";
 
 import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
+import { useSearchParams } from "react-router-dom";
+import { sort } from "data/redux/features/pizzas/pizzasSlice";
 
 function MainPage() {
   const plugArray = Array(10).fill(null);
   const dispatch = useTypedDispatch();
+
+  const [active, setActive] = useState(0);
+
+  const [searchParams] = useSearchParams();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
     pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
 
   useEffect(() => {
-    // TODO: thunk from toolkit
-    // TODO: посомтреть, правильно ли отрабатывает запрос при первой загрузке страницы (хорошо бы, опять же, делать это через бэк)
-    dispatch(fetchPizzas());
-  }, []);
+    const filterVal = Number(searchParams.get("category") || "");
+    setActive(filterVal);
+
+    // TODO: при перезагрузке тоже смотреть на урл и использовать ыилтеред если что-то есть в урле
+    if (pizzasList.length === 0) {
+      dispatch(fetchPizzas());
+    } else {
+      dispatch(sort({ type: "category", id: filterVal }));
+    }
+  }, [searchParams]);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories />
+        <Categories active={active} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>

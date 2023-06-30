@@ -1,27 +1,14 @@
-import { useEffect, useState } from "react";
-
 import nextId from "react-id-generator";
 import cx from "classnames";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useTypedDispatch } from "data/hooks";
-import { sort } from "data/redux/features/pizzas/pizzasSlice";
 import { pizzaCategories } from "data/constants/pizza";
 import s from "./Categories.module.scss";
 
-function Categories() {
-  const [active, setActive] = useState(0);
-
-  const dispatch = useTypedDispatch();
-
-  const [searchParams] = useSearchParams();
-
-  useEffect(() => {
-    const filterVal = Number(searchParams.get("category") || "");
-    setActive(filterVal);
-    dispatch(sort({ type: "category", id: filterVal }));
-  }, [searchParams]);
-
+interface ICategoriesProps {
+  active: number;
+}
+function Categories({ active }: ICategoriesProps) {
   // TODO: useCallback (?)
   function makeUrl(index: number) {
     // TODO: text in category url (eng)
