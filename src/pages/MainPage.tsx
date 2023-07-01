@@ -35,6 +35,17 @@ function MainPage() {
     }
   }, [searchParams]);
 
+  // const navigate = useNavigate();
+
+  // const params = { sort: "date", order: "newest" };
+
+  // const changaNavigate = () => {
+  //   navigate({
+  //     pathname: "/posts",
+  //     search: `?${createSearchParams(params)}`,
+  //   });
+  // };
+
   return (
     <div className="container">
       <div className="content__top">
