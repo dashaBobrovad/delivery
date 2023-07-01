@@ -21,8 +21,8 @@ function Header() {
         </Link>
         <div>
           <Link to="/basket" className="button button--cart">
-            <span>{isLoaded ? basketSum : "	—"}&nbsp;₽</span>
-            <div className="button__delimiter"></div>
+            <span>{isLoaded ? basketSum : "—"}&nbsp;₽</span>
+            <div className="button__delimiter" />
             <Icon icon="basket" />
             <span>{isLoaded ? basketCount : "—"}</span>
           </Link>

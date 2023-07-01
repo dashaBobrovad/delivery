@@ -9,15 +9,10 @@ interface ICategoriesProps {
   active: number;
 }
 function Categories({ active }: ICategoriesProps) {
-  // TODO: useCallback (?)
-  // function makeUrl(index: number) {
-  //   // TODO: text in category url (eng)
-  //   return `?category=${index}`;
-  // }
 
   const navigate = useNavigate();
 
-  // вынести эту логику наверх (урл в стэйт), а функцию в утилиты
+  // вынести как хук и использовать в Sort component
   function onActiveClick(index: number) {
     const params = { category: String(index) };
     navigate({

@@ -22,29 +22,19 @@ function MainPage() {
 
   useEffect(() => {
     const filterVal = Number(searchParams.get("category") || "");
-    setActive(filterVal);
 
-    // TODO: после очистки окалки и перезагрузки не делается вообще никакой запрос. Надо сразу получать отфильтрованные данные в таком случае?
-    // TODO: слишком некрасивое решение; если пицц нет, а есть параметр, сразу запращивать отфильтрованные (проблема в том, что у нас нет бэка)
+    // TODO: change query with redux (?)
+    // const sortVal = Number(searchParams.get("sort") || "");
+
+    setActive(filterVal);
 
     if (pizzasList.length === 0) {
       dispatch(fetchPizzas(filterVal));
     } else {
-      console.log("3");
       dispatch(sort({ type: "category", id: filterVal }));
     }
+
   }, [searchParams]);
-
-  // const navigate = useNavigate();
-
-  // const params = { sort: "date", order: "newest" };
-
-  // const changaNavigate = () => {
-  //   navigate({
-  //     pathname: "/posts",
-  //     search: `?${createSearchParams(params)}`,
-  //   });
-  // };
 
   return (
     <div className="container">
