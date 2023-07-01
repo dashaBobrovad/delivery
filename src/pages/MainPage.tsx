@@ -27,13 +27,8 @@ function MainPage() {
     // TODO: после очистки окалки и перезагрузки не делается вообще никакой запрос. Надо сразу получать отфильтрованные данные в таком случае?
     // TODO: слишком некрасивое решение; если пицц нет, а есть параметр, сразу запращивать отфильтрованные (проблема в том, что у нас нет бэка)
 
-    if (pizzasList.length === 0 && searchParams.get("category")) {
-      console.log("1");
-      dispatch(fetchPizzas());
-      dispatch(sort({ type: "category", id: filterVal }));
-    } else if (pizzasList.length === 0 && !searchParams.get("category")) {
-      console.log("2");
-      dispatch(fetchPizzas());
+    if (pizzasList.length === 0) {
+      dispatch(fetchPizzas(filterVal));
     } else {
       console.log("3");
       dispatch(sort({ type: "category", id: filterVal }));
