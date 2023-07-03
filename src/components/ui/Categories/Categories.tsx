@@ -22,7 +22,17 @@ function Categories({ active, searchParams, setSearchParams }: ICategoriesProps)
   // const [searchParams, setSearchParams] = useSearchParams();
 
   function onActiveClick(index: number) {
-    setSearchParams({...searchParams, category: index} as URLSearchParams);
+   
+    // const params = { category: String(index) };
+
+    // navigate({
+    //   pathname: "/",
+    //   search: `?${createSearchParams(params)}`,
+    // });
+
+    console.log(searchParams);
+    setSearchParams({...searchParams, category: String(index)} as URLSearchParams);
+    // TODO: use OnActiveClickm
   }
 
   return (

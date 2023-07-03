@@ -1,12 +1,13 @@
-import { createSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
+
+// params:category: index
 function useChangeNav(params: any) {
-    const resParams = params; // TODO:
-    const navigate = useNavigate();
-    navigate({
-        pathname: "/",
-        search: `?${createSearchParams(resParams)}`,
-      });
-  }
-  
-  export default useChangeNav;
+  const [searchParams, setSearchParams] = useSearchParams();
+
+//   function onActiveClick(index: number) {
+    setSearchParams({...searchParams, params } as URLSearchParams);
+//   }
+}
+
+export default useChangeNav;
