@@ -35,7 +35,11 @@ export enum ESortList {
   ALPHABET = "алфавиту",
 }
 
-const sortList: ESortList[] = [ESortList.POPULAR, ESortList.PRICE, ESortList.ALPHABET];
+const sortList: ESortList[] = [
+  ESortList.POPULAR,
+  ESortList.PRICE,
+  ESortList.ALPHABET,
+];
 
 // размеры пицц
 export enum EPizzaSizes {

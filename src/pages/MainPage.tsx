@@ -49,7 +49,7 @@ function MainPage() {
       dispatch(fetchPizzas(filterVal));
     } else {
       dispatch(sort({ type: "category", id: filterVal }));
-      dispatch(sort({type: "sortBy", id: sortVal }));
+      dispatch(sort({ type: "sortBy", id: sortVal }));
     }
   }, [searchParams]);
 
