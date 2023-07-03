@@ -7,6 +7,7 @@ import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 import { useSearchParams } from "react-router-dom";
 import { sort } from "data/redux/features/pizzas/pizzasSlice";
+import { pizzaCategories } from "data/constants/pizza";
 
 function MainPage() {
   const plugArray = Array(10).fill(null);
@@ -16,18 +17,17 @@ function MainPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
     pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
 
-    
-
   useEffect(() => {
-    const filterVal = Number(searchParams.get("category") || "");
-
-    // TODO: change query with redux (?)
-    // const sortVal = Number(searchParams.get("sort") || "");
+    let filterVal = Number(searchParams.get("category") || "");
+    if (filterVal) {
+      if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
+        filterVal = 0;
+      }
+    }
 
     setActive(filterVal);
 
@@ -36,13 +36,16 @@ function MainPage() {
     } else {
       dispatch(sort({ type: "category", id: filterVal }));
     }
-
   }, [searchParams]);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories active={active} setSearchParams={setSearchParams} searchParams={searchParams}/>
+        <Categories
+          active={active}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+        />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
