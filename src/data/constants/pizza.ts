@@ -28,6 +28,15 @@ const pizzaCategories: EPizzaCategories[] = [
   EPizzaCategories.CLOSED,
 ];
 
+// сортировка пиц
+export enum ESortList {
+  POPULAR = "популярности",
+  PRICE = "цене",
+  ALPHABET = "алфавиту",
+}
+
+const sortList: ESortList[] = [ESortList.POPULAR, ESortList.PRICE, ESortList.ALPHABET];
+
 // размеры пицц
 export enum EPizzaSizes {
   S = 26,
@@ -37,4 +46,4 @@ export enum EPizzaSizes {
 
 const pizzaSizes: EPizzaSizes[] = [EPizzaSizes.S, EPizzaSizes.M, EPizzaSizes.L];
 
-export { pizzaDoughTypes, pizzaCategories, pizzaSizes };
+export { pizzaDoughTypes, pizzaCategories, pizzaSizes, sortList };

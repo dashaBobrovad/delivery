@@ -2,20 +2,30 @@ import { useEffect, useRef, useState } from "react";
 
 import nextId from "react-id-generator";
 
+import { sortList } from "data/constants/pizza";
 import { Icon } from "components";
 import s from "./Sort.module.scss";
 
-function Sort() {
-  const list = ["популярности", "цене", "алфавиту"];
+interface ISortProps {
+  active: number;
+  searchParams: URLSearchParams;
+  setSearchParams: (newParams: URLSearchParams) => void;
+}
+
+function Sort({ active, searchParams, setSearchParams }: ISortProps) {
+  // const list = ["популярности", "цене", "алфавиту"];
 
   const sortRef = useRef<HTMLInputElement | null>(null);
 
-  const [active, setActive] = useState(0);
+  // const [active, setActive] = useState(0);
 
   const [open, setOpen] = useState(false);
 
   function onActiveClick(index: number) {
-    setActive(index);
+    setSearchParams({
+      ...searchParams,
+      sortBy: String(index),
+    } as URLSearchParams);
     setOpen(false);
   }
 
@@ -49,12 +59,12 @@ function Sort() {
       >
         <Icon icon="smallArrow" />
         <b>Сортировка по:</b>
-        <span>{list[active]}</span>
+        <span>{sortList[active]}</span>
       </div>
       {open && (
         <div className={s.popup}>
           <ul className={s.list}>
-            {list.map((item, index) => (
+            {sortList.map((item, index) => (
               <li
                 role="tab"
                 tabIndex={0}
