@@ -14,11 +14,14 @@ function MainPage() {
 
   const [active, setActive] = useState(0);
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
     pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
+
+    
 
   useEffect(() => {
     const filterVal = Number(searchParams.get("category") || "");
@@ -39,7 +42,7 @@ function MainPage() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories active={active} />
+        <Categories active={active} setSearchParams={setSearchParams} searchParams={searchParams}/>
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
