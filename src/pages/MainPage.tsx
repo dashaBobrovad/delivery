@@ -23,10 +23,12 @@ function MainPage() {
 
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
-    if (filterVal) {
-      if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
-        filterVal = 0;
-      }
+    if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
+      setSearchParams({
+        ...searchParams,
+        category: "0",
+      } as URLSearchParams);
+      filterVal = 0;
     }
 
     setActive(filterVal);

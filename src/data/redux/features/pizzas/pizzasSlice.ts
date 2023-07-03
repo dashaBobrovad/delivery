@@ -58,7 +58,6 @@ export const pizzasSlice = createSlice({
           filteredPizzas = state.pizzas.list;
           break;
       }
-      console.log("sort action");
       state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
