@@ -1,25 +1,28 @@
 import nextId from "react-id-generator";
 import cx from "classnames";
+// import { createSearchParams, useNavigate } from "react-router-dom";
+
 
 import { pizzaCategories } from "data/constants/pizza";
 import s from "./Categories.module.scss";
 
+
 interface ICategoriesProps {
   active: number;
+  searchParams: URLSearchParams;
+  setSearchParams: (newParams: URLSearchParams) => void;
 }
-function Categories({ active }: ICategoriesProps) {
+function Categories({ active, searchParams, setSearchParams }: ICategoriesProps) {
 
+  // const query = useQuery(); https://youtu.be/tQm7JK3OJpM
+  // const category = query.get("category") || "";
+
+  // const navigate = useNavigate();
+
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   function onActiveClick(index: number) {
-    // const params = { category: String(index) };
-    // navigate({
-    //   pathname: "/",
-    //   search: `?${createSearchParams(params)}`,
-    // });
-
-    console.log(index);
-    
-    // TODO: use OnActiveClickm
+    setSearchParams({...searchParams, category: index} as URLSearchParams);
   }
 
   return (
