@@ -54,6 +54,9 @@ export const pizzasSlice = createSlice({
             (item) => item.category === action.payload.id
           );
           break;
+        // TODO: учитывать, что есть и фильтр, и сортировка
+        // case "sortBy":
+
         default:
           filteredPizzas = state.pizzas.list;
           break;
