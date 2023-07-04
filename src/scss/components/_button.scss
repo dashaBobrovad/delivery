@@ -31,15 +31,6 @@
     transition: all $duration ease-in-out;
   }
 
-  // &:hover {
-  //   background-color: darken($orange, 8%);
-  // }
-
-  // &:active {
-  //   background-color: darken($orange, 12%);
-  //   transform: translateY(1px);
-  // }
-
   &--circle {
     display: flex;
     align-items: center;
@@ -58,11 +49,6 @@
 
   &--black {
     background-color: $black;
-
-    // &:hover,
-    // &:active {
-    //   background-color: lighten($color: $black, $amount: 10);
-    // }
   }
 
   &--outline {
@@ -78,24 +64,6 @@
         fill: $orange;
       }
     }
-
-    // &:hover {
-    //   background-color: $orange;
-
-    //   &,
-    //   span {
-    //     color: $white;
-    //   }
-
-    //   svg {
-    //     fill: $white;
-    //     stroke: $white;
-    //   }
-    // }
-
-    // &:active {
-    //   background-color: darken($orange, 8%);
-    // }
   }
 
   &__delimiter {
@@ -117,13 +85,6 @@
       font-weight: 600;
       font-size: 16px;
     }
-
-    // &:hover {
-    //   i {
-    //     background-color: #fff;
-    //     color: $orange;
-    //   }
-    // }
 
     i {
       display: inline-block;

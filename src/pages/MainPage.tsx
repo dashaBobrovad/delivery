@@ -7,43 +7,66 @@ import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 import { useSearchParams } from "react-router-dom";
 import { sort } from "data/redux/features/pizzas/pizzasSlice";
+import { pizzaCategories, sortList } from "data/constants/pizza";
 
 function MainPage() {
   const plugArray = Array(10).fill(null);
   const dispatch = useTypedDispatch();
 
-  const [active, setActive] = useState(0);
+  const [activeFilter, setActiveFilter] = useState(0);
+  const [activeSort, setActiveSort] = useState(0);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
     pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
 
-    
-
   useEffect(() => {
-    const filterVal = Number(searchParams.get("category") || "");
+    let filterVal = Number(searchParams.get("category") || "");
+    const sortVal = Number(searchParams.get("sort") || "");
 
-    // TODO: change query with redux (?)
-    // const sortVal = Number(searchParams.get("sort") || "");
+    if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
+      setSearchParams({
+        ...searchParams,
+        category: "0",
+      } as URLSearchParams);
+      filterVal = 0;
+    }
 
-    setActive(filterVal);
+    if (!sortList.includes(sortList[sortVal])) {
+      setSearchParams({
+        ...searchParams,
+        sortBy: "0",
+      } as URLSearchParams);
+      filterVal = 0;
+    }
+
+    setActiveFilter(filterVal);
+    setActiveSort(sortVal);
 
     if (pizzasList.length === 0) {
       dispatch(fetchPizzas(filterVal));
     } else {
       dispatch(sort({ type: "category", id: filterVal }));
+      dispatch(sort({ type: "sortBy", id: sortVal }));
     }
-
   }, [searchParams]);
 
   return (
     <div className="container">
       <div className="content__top">
-        <Categories active={active} setSearchParams={setSearchParams} searchParams={searchParams}/>
-        <Sort />
+        {/* TODO: вныести повторяющуюся логику для урла в хук */}
+        <Categories
+          active={activeFilter}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+        />
+        <Sort
+          active={activeSort}
+          setSearchParams={setSearchParams}
+          searchParams={searchParams}
+        />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">

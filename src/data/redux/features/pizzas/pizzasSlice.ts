@@ -54,11 +54,13 @@ export const pizzasSlice = createSlice({
             (item) => item.category === action.payload.id
           );
           break;
+        // TODO: учитывать, что есть и фильтр, и сортировка
+        // case "sortBy":
+
         default:
           filteredPizzas = state.pizzas.list;
           break;
       }
-      console.log("sort action");
       state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
