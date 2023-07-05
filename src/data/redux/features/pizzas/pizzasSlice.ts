@@ -15,6 +15,16 @@ export interface IPizzaState {
 //   // size: number;
 // }
 
+// 
+// interface AddToBasketPayload extends IPizza{
+// type: number;
+// size: number; }
+
+
+
+
+
+interface 
 export interface IPizzaSort {
   type: string; // enum
   id: number;
@@ -22,7 +32,7 @@ export interface IPizzaSort {
 
 export type PizzaAction = PayloadAction<IPizza[]>;
 export type SortPizzaAction = PayloadAction<IPizzaSort>;
-// export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
+export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type AddToBasketAction = PayloadAction<any>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
