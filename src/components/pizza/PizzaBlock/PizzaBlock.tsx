@@ -36,8 +36,8 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
     // TODO: заменить на id (?)
     const item = {
       id,
-      type: pizzaDoughTypes[activeType],
-      size: pizzaSizes[activeSize],
+      type: pizzaDoughTypes[activeType] as string,
+      size: pizzaSizes[activeSize] as number,
     };
     dispatch(addToBasket(item));
   };

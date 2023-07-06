@@ -15,10 +15,8 @@ function Categories({
   setSearchParams,
 }: ICategoriesProps) {
   function onActiveClick(index: number) {
-    setSearchParams({
-      ...searchParams,
-      category: String(index),
-    } as URLSearchParams);
+    searchParams.set("category", String(index));
+    setSearchParams(searchParams);
   }
 
   return (

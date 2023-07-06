@@ -20,12 +20,18 @@ function MainPage() {
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
-    pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
+    pizzas.filteredList?.length > 0 ? pizzas.filteredList : pizzas.list;
+
+  useEffect(() => {
+    console.log(searchParams.toString());
+  }, [searchParams]);
+
 
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
     const sortVal = Number(searchParams.get("sort") || "");
 
+ 
     if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
       setSearchParams({
         ...searchParams,
