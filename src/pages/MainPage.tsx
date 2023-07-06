@@ -20,7 +20,7 @@ function MainPage() {
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
   const pizzasList =
-    pizzas.filteredList.length > 0 ? pizzas.filteredList : pizzas.list;
+    pizzas.filteredList?.length > 0 ? pizzas.filteredList : pizzas.list;
 
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
