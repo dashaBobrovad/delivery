@@ -13,19 +13,16 @@ interface ISortProps {
 }
 
 function Sort({ active, searchParams, setSearchParams }: ISortProps) {
-  // const list = ["популярности", "цене", "алфавиту"];
-
   const sortRef = useRef<HTMLInputElement | null>(null);
 
-  // const [active, setActive] = useState(0);
-
+  console.log(searchParams);
+  
   const [open, setOpen] = useState(false);
 
   function onActiveClick(index: number) {
-    setSearchParams({
-      ...searchParams,
-      sortBy: String(index),
-    } as URLSearchParams);
+    searchParams.set("sortBy", String(index));
+    setSearchParams(searchParams);
+
     setOpen(false);
   }
 
