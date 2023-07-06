@@ -26,25 +26,19 @@ function MainPage() {
     console.log(searchParams.toString());
   }, [searchParams]);
 
-
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
     const sortVal = Number(searchParams.get("sort") || "");
 
- 
     if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
-      setSearchParams({
-        ...searchParams,
-        category: "0",
-      } as URLSearchParams);
+      searchParams.set("category", "0");
+      setSearchParams(searchParams);
       filterVal = 0;
     }
 
     if (!sortList.includes(sortList[sortVal])) {
-      setSearchParams({
-        ...searchParams,
-        sortBy: "0",
-      } as URLSearchParams);
+      searchParams.set("sortBy", "0");
+      setSearchParams(searchParams);
       filterVal = 0;
     }
 
@@ -55,7 +49,8 @@ function MainPage() {
       dispatch(fetchPizzas(filterVal));
     } else {
       dispatch(sort({ type: "category", id: filterVal }));
-      dispatch(sort({ type: "sortBy", id: sortVal }));
+      // TODO: если диспатчим сразу 2, отрабатывеат только последний
+     // dispatch(sort({ type: "sortBy", id: sortVal }));
     }
   }, [searchParams]);
 
