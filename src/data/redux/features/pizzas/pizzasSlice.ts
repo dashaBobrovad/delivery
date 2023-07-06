@@ -9,7 +9,7 @@ export interface IPizzaState {
 }
 
 interface AddToBasketPayload {
-  id:number;
+  id: number;
   type: string;
   size: number;
 }
