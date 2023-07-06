@@ -28,7 +28,7 @@ function MainPage() {
 
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
-    const sortVal = Number(searchParams.get("sort") || "");
+    const sortVal = Number(searchParams.get("sortBy") || "");
 
     if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
       searchParams.set("category", "0");
@@ -48,9 +48,10 @@ function MainPage() {
     if (pizzasList.length === 0) {
       dispatch(fetchPizzas(filterVal));
     } else {
-      dispatch(sort({ type: "category", id: filterVal }));
+     // dispatch(sort({ type: "category", id: filterVal }));
       // TODO: если диспатчим сразу 2, отрабатывеат только последний
      // dispatch(sort({ type: "sortBy", id: sortVal }));
+     dispatch(sort({filter: filterVal, sort: sortVal, sortBy: sortVal}));
     }
   }, [searchParams]);
 

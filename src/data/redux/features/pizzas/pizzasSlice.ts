@@ -20,7 +20,8 @@ export interface IPizzaSort {
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
-export type SortPizzaAction = PayloadAction<IPizzaSort>;
+// export type SortPizzaAction = PayloadAction<IPizzaSort>;
+export type SortPizzaAction = PayloadAction<any>;
 export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
 export type DecreasePizzaCountAction = PayloadAction<number>;
@@ -46,19 +47,34 @@ export const pizzasSlice = createSlice({
     },
     sort: (state, action: SortPizzaAction) => {
       let filteredPizzas = [];
-      switch (action.payload.type) {
-        case "category":
-          filteredPizzas = state.pizzas.list.filter(
-            (item) => item.category === action.payload.id
-          );
-          break;
-        // TODO: учитывать, что есть и фильтр, и сортировка
-        // case "sortBy":
+      // switch (action.payload.type) {
+      //   case "category":
+      //     filteredPizzas = state.pizzas.list.filter(
+      //       (item) => item.category === action.payload.id
+      //     );
+      //     break;
+      //   // TODO: учитывать, что есть и фильтр, и сортировка
+      //   // case "sortBy":
 
-        default:
-          filteredPizzas = state.pizzas.list;
-          break;
-      }
+      //   default:
+      //     filteredPizzas = state.pizzas.list;
+      //     break;
+      // }
+      filteredPizzas = state.pizzas.list.filter(
+        (item) => item.category === action.payload.filter
+      );
+
+      // let sortBy;
+      // let sortVal;
+      // switch (action.payload.sortBy) {
+      //   case 0:
+      //     sortVal = "rating";
+      //     break;
+      //   default:
+      //     filteredPizzas = state.pizzas.list;
+      //     break;
+      // }
+      filteredPizzas.sort((a, b) => b.rating - a.rating);
       state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
