@@ -74,6 +74,7 @@ export const pizzasSlice = createSlice({
       //     filteredPizzas = state.pizzas.list;
       //     break;
       // }
+      // TODO: .rating заменить на action.payload.sortBy ключ (switch case ?)
       filteredPizzas.sort((a, b) => b.rating - a.rating);
       state.pizzas.filteredList = filteredPizzas;
     },
