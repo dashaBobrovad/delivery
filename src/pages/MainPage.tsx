@@ -6,7 +6,6 @@ import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 import { useSearchParams } from "react-router-dom";
-// import { sort } from "data/redux/features/pizzas/pizzasSlice";
 import { pizzaCategories, sortList } from "data/constants/pizza";
 import { IPizza } from "types";
 
@@ -23,15 +22,12 @@ function MainPage() {
 
   const [filteredPissaz, setFilteredPizzas] = useState<IPizza[]>([]);
 
-  // const [pizzas, setPizzas]
   const pizzasList = filteredPissaz.length > 0 ? filteredPissaz : pizzas.list;
 
   useEffect(() => {
     if (pizzasList.length === 0) {
       dispatch(fetchPizzas());
     }
-
-    // else {
   }, []);
 
   useEffect(() => {
@@ -63,48 +59,28 @@ function MainPage() {
         filteredPizzas = pizzas.list;
       }
 
-      let resSort = "";
-      switch (sortVal) {
-        case 0:
-          resSort = "rating";
-          break;
-        case 1:
-          resSort = "price";
-          break;
-        default:
-          break;
-      }
+      const sortFn = (a: IPizza, b: IPizza) => {
+        switch (sortVal) {
+          case 0:
+            return b.rating - a.rating;
+          case 1:
+            return a.price - b.price;
+          case 2:
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+              return -1;
+            }
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            }
+            break;
+          default:
+            break;
+        }
+        return 0;
+      };
 
-      // TODO: избавиться от дублирования
-      if (sortVal === 0) {
-        filteredPizzas.sort(
-          (a, b) =>
-            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
-            +(b as any)[resSort as keyof IPizza] -
-            +(a as any)[resSort as keyof IPizza]
-        );
-      }
+      filteredPizzas.sort((a, b) => sortFn(a, b));
 
-      if (sortVal === 1) {
-        filteredPizzas.sort(
-          (a, b) =>
-            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
-            +(a as any)[resSort as keyof IPizza] -
-            +(b as any)[resSort as keyof IPizza]
-        );
-      }
-
-      if (sortVal === 2) {
-        filteredPizzas.sort((a, b) => {
-          if (a.title.toLowerCase() < b.title.toLowerCase()) {
-            return -1;
-          }
-          if (a.title.toLowerCase() > b.title.toLowerCase()) {
-            return 1;
-          }
-          return 0;
-        });
-      }
       setFilteredPizzas(filteredPizzas);
     }
   }, [pizzas.list, searchParams]);
