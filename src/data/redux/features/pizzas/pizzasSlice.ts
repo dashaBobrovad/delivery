@@ -47,22 +47,12 @@ export const pizzasSlice = createSlice({
     },
     sort: (state, action: SortPizzaAction) => {
       let filteredPizzas = [];
-      // switch (action.payload.type) {
-      //   case "category":
-      //     filteredPizzas = state.pizzas.list.filter(
-      //       (item) => item.category === action.payload.id
-      //     );
-      //     break;
-      //   // TODO: учитывать, что есть и фильтр, и сортировка
-      //   // case "sortBy":
 
-      //   default:
-      //     filteredPizzas = state.pizzas.list;
-      //     break;
-      // }
-      filteredPizzas = state.pizzas.list.filter(
-        (item) => item.category === action.payload.filter
-      );
+      // TODO: если закомменчен фильтр, то сортировка кабтает корректно 
+      filteredPizzas = state.pizzas.list;
+      // .filter(
+      //   (item) => item.category === action.payload.filter
+      // );
 
       let resSort = "";
       switch (action.payload.sort) {
@@ -76,12 +66,21 @@ export const pizzasSlice = createSlice({
           break;
       }
 
-      // TODO: fx as any
-      if (action.payload.sort === 0 || action.payload.sort === 1) {
+      if (action.payload.sort === 0) {
         filteredPizzas.sort(
           (a, b) =>
+            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
             +(b as any)[resSort as keyof IPizza] -
             +(a as any)[resSort as keyof IPizza]
+        );
+      }
+
+      if (action.payload.sort === 1) {
+        filteredPizzas.sort(
+          (a, b) =>
+            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
+            +(a as any)[resSort as keyof IPizza] -
+            +(b as any)[resSort as keyof IPizza]
         );
       }
 
@@ -94,7 +93,7 @@ export const pizzasSlice = createSlice({
             return -1;
           }
           if (
-            a.title.toLowerCase().toLowerCase() >
+            a.title.toLowerCase()>
             b.title.toLowerCase()
           ) {
             return 1;
