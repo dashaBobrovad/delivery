@@ -6,7 +6,6 @@ import {
   PizzaAction,
   setIsPizzaListLoaded,
   SetIsPizzaListLoadedAction,
-  sort,
   SortPizzaAction,
 } from "../features/pizzas/pizzasSlice";
 import pizzasMock from "../../mock";
@@ -14,7 +13,7 @@ import pizzasMock from "../../mock";
 const path = "https://api.github.com/repos/dashaBobrovad/delivery";
 
 const fetchPizzas =
-  (filterVal: number) =>
+  () =>
   async (
     dispatch: Dispatch<
       PizzaAction | SetIsPizzaListLoadedAction | SortPizzaAction
@@ -28,14 +27,15 @@ const fetchPizzas =
       .then((d) => {
         dispatch(get(JSON.parse(base64DecodeFn(window.atob(d.content)))));
         dispatch(setIsPizzaListLoaded(true));
-        dispatch(sort({ type: "category", id: filterVal }));
+        // TODO: ? как-то дотянуться до стэйта ?
+        // dispatch(sort({ type: "category", id: filterVal }));
       })
       .catch((e) => {
         const error = e;
         console.error(new Error("error", error));
         dispatch(get(pizzasMock));
         dispatch(setIsPizzaListLoaded(true));
-        dispatch(sort({ type: "category", id: filterVal }));
+        // dispatch(sort({ type: "category", id: filterVal }));
       });
   };
 
