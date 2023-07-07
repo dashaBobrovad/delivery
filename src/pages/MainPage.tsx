@@ -51,7 +51,7 @@ function MainPage() {
      // dispatch(sort({ type: "category", id: filterVal }));
       // TODO: если диспатчим сразу 2, отрабатывеат только последний
      // dispatch(sort({ type: "sortBy", id: sortVal }));
-     dispatch(sort({filter: filterVal, sort: sortVal, sortBy: sortVal}));
+     dispatch(sort({filter: filterVal, sort: sortVal}));
     }
   }, [searchParams]);
 
