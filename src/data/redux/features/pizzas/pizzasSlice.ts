@@ -48,11 +48,13 @@ export const pizzasSlice = createSlice({
     sort: (state, action: SortPizzaAction) => {
       let filteredPizzas = [];
 
-      // TODO: если закомменчен фильтр, то сортировка кабтает корректно 
-      filteredPizzas = state.pizzas.list;
-      // .filter(
-      //   (item) => item.category === action.payload.filter
-      // );
+      if(action.payload.filter !== 0){
+        filteredPizzas = state.pizzas.list.filter(
+          (item) => item.category === action.payload.filter
+        );
+      } else {
+        filteredPizzas = state.pizzas.list;
+      }
 
       let resSort = "";
       switch (action.payload.sort) {
@@ -66,6 +68,7 @@ export const pizzasSlice = createSlice({
           break;
       }
 
+      // TODO: избавиться от дублирования
       if (action.payload.sort === 0) {
         filteredPizzas.sort(
           (a, b) =>
