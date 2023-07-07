@@ -53,7 +53,6 @@ function MainPage() {
     setActiveSort(sortVal);
 
     if (sortVal || filterVal) {
-
       let filteredPizzas = [];
 
       if (filterVal !== 0) {

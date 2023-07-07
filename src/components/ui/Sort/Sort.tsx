@@ -16,7 +16,7 @@ function Sort({ active, searchParams, setSearchParams }: ISortProps) {
   const sortRef = useRef<HTMLInputElement | null>(null);
 
   console.log(searchParams);
-  
+
   const [open, setOpen] = useState(false);
 
   function onActiveClick(index: number) {
