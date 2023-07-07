@@ -23,12 +23,8 @@ function MainPage() {
     pizzas.filteredList?.length > 0 ? pizzas.filteredList : pizzas.list;
 
   useEffect(() => {
-    console.log(searchParams.toString());
-  }, [searchParams]);
-
-  useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
-    const sortVal = Number(searchParams.get("sortBy") || "");
+    let sortVal = Number(searchParams.get("sortBy") || "");
 
     if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
       searchParams.set("category", "0");
@@ -39,7 +35,7 @@ function MainPage() {
     if (!sortList.includes(sortList[sortVal])) {
       searchParams.set("sortBy", "0");
       setSearchParams(searchParams);
-      filterVal = 0;
+      sortVal = 0;
     }
 
     setActiveFilter(filterVal);
@@ -48,9 +44,7 @@ function MainPage() {
     if (pizzasList.length === 0) {
       dispatch(fetchPizzas(filterVal));
     } else {
-     // dispatch(sort({ type: "category", id: filterVal }));
-      // TODO: если диспатчим сразу 2, отрабатывеат только последний
-     // dispatch(sort({ type: "sortBy", id: sortVal }));
+      // TODO: вынести из стора сюда; он в сторе нафиг не нужен 
      dispatch(sort({filter: filterVal, sort: sortVal}));
     }
   }, [searchParams]);
@@ -58,7 +52,6 @@ function MainPage() {
   return (
     <div className="container">
       <div className="content__top">
-        {/* TODO: вныести повторяющуюся логику для урла в хук */}
         <Categories
           active={activeFilter}
           setSearchParams={setSearchParams}
