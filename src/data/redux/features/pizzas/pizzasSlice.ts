@@ -64,18 +64,46 @@ export const pizzasSlice = createSlice({
         (item) => item.category === action.payload.filter
       );
 
-      // let sortBy;
-      // let sortVal;
-      // switch (action.payload.sortBy) {
-      //   case 0:
-      //     sortVal = "rating";
-      //     break;
-      //   default:
-      //     filteredPizzas = state.pizzas.list;
-      //     break;
-      // }
-      // TODO: .rating заменить на action.payload.sortBy ключ (switch case ?)
-      filteredPizzas.sort((a, b) => b.rating - a.rating);
+      let resSort = "";
+      switch (action.payload.sort) {
+        case 0:
+          resSort = "rating";
+          break;
+        case 1:
+          resSort = "price";
+          break;
+        default:
+          break;
+      }
+
+      // TODO: fx as any
+      if (action.payload.sort === 0 || action.payload.sort === 1) {
+        filteredPizzas.sort(
+          (a, b) =>
+            +(b as any)[resSort as keyof IPizza] -
+            +(a as any)[resSort as keyof IPizza]
+        );
+      }
+
+      if (action.payload.sort === 2) {
+        filteredPizzas.sort((a, b) => {
+          // TODO: fx as any
+          if (
+            a.title.toLowerCase() <
+            b.title.toLowerCase()
+          ) {
+            return -1;
+          }
+          if (
+            a.title.toLowerCase().toLowerCase() >
+            b.title.toLowerCase()
+          ) {
+            return 1;
+          }
+          return 0;
+        });
+      }
+
       state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
