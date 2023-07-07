@@ -87,7 +87,6 @@ export const pizzasSlice = createSlice({
 
       if (action.payload.sort === 2) {
         filteredPizzas.sort((a, b) => {
-          // TODO: fx as any
           if (
             a.title.toLowerCase() <
             b.title.toLowerCase()
