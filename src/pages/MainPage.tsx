@@ -6,8 +6,8 @@ import fetchPizzas from "data/redux/asyncActions/pizzas";
 import { useTypedSelector, useTypedDispatch } from "data/hooks";
 import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 import { useSearchParams } from "react-router-dom";
-import { sort } from "data/redux/features/pizzas/pizzasSlice";
 import { pizzaCategories, sortList } from "data/constants/pizza";
+import { IPizza } from "types";
 
 function MainPage() {
   const plugArray = Array(10).fill(null);
@@ -19,16 +19,20 @@ function MainPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const pizzas = useTypedSelector((state) => state.pizzas.pizzas);
-  const pizzasList =
-    pizzas.filteredList?.length > 0 ? pizzas.filteredList : pizzas.list;
+
+  const [filteredPissaz, setFilteredPizzas] = useState<IPizza[]>([]);
+
+  const pizzasList = filteredPissaz.length > 0 ? filteredPissaz : pizzas.list;
 
   useEffect(() => {
-    console.log(searchParams.toString());
-  }, [searchParams]);
+    if (pizzasList.length === 0) {
+      dispatch(fetchPizzas());
+    }
+  }, []);
 
   useEffect(() => {
     let filterVal = Number(searchParams.get("category") || "");
-    const sortVal = Number(searchParams.get("sortBy") || "");
+    let sortVal = Number(searchParams.get("sortBy") || "");
 
     if (!pizzaCategories.includes(pizzaCategories[filterVal])) {
       searchParams.set("category", "0");
@@ -39,26 +43,51 @@ function MainPage() {
     if (!sortList.includes(sortList[sortVal])) {
       searchParams.set("sortBy", "0");
       setSearchParams(searchParams);
-      filterVal = 0;
+      sortVal = 0;
     }
-
     setActiveFilter(filterVal);
     setActiveSort(sortVal);
 
-    if (pizzasList.length === 0) {
-      dispatch(fetchPizzas(filterVal));
-    } else {
-     // dispatch(sort({ type: "category", id: filterVal }));
-      // TODO: если диспатчим сразу 2, отрабатывеат только последний
-     // dispatch(sort({ type: "sortBy", id: sortVal }));
-     dispatch(sort({filter: filterVal, sort: sortVal}));
+    if (sortVal || filterVal) {
+      let filteredPizzas = [];
+
+      if (filterVal !== 0) {
+        filteredPizzas = pizzas.list.filter(
+          (item) => item.category === filterVal
+        );
+      } else {
+        filteredPizzas = pizzas.list;
+      }
+
+      const sortFn = (a: IPizza, b: IPizza) => {
+        switch (sortVal) {
+          case 0:
+            return b.rating - a.rating;
+          case 1:
+            return a.price - b.price;
+          case 2:
+            if (a.title.toLowerCase() < b.title.toLowerCase()) {
+              return -1;
+            }
+            if (a.title.toLowerCase() > b.title.toLowerCase()) {
+              return 1;
+            }
+            break;
+          default:
+            break;
+        }
+        return 0;
+      };
+
+      filteredPizzas.sort((a, b) => sortFn(a, b));
+
+      setFilteredPizzas(filteredPizzas);
     }
-  }, [searchParams]);
+  }, [pizzas.list, searchParams]);
 
   return (
     <div className="container">
       <div className="content__top">
-        {/* TODO: вныести повторяющуюся логику для урла в хук */}
         <Categories
           active={activeFilter}
           setSearchParams={setSearchParams}

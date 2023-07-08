@@ -20,7 +20,6 @@ export interface IPizzaSort {
 }
 
 export type PizzaAction = PayloadAction<IPizza[]>;
-// export type SortPizzaAction = PayloadAction<IPizzaSort>;
 export type SortPizzaAction = PayloadAction<any>;
 export type AddToBasketAction = PayloadAction<AddToBasketPayload>;
 export type IncreasePizzaCountAction = PayloadAction<number>;
@@ -44,68 +43,6 @@ export const pizzasSlice = createSlice({
   reducers: {
     get: (state, action: PizzaAction) => {
       state.pizzas.list = action.payload;
-    },
-    sort: (state, action: SortPizzaAction) => {
-      let filteredPizzas = [];
-
-      if(action.payload.filter !== 0){
-        filteredPizzas = state.pizzas.list.filter(
-          (item) => item.category === action.payload.filter
-        );
-      } else {
-        filteredPizzas = state.pizzas.list;
-      }
-
-      let resSort = "";
-      switch (action.payload.sort) {
-        case 0:
-          resSort = "rating";
-          break;
-        case 1:
-          resSort = "price";
-          break;
-        default:
-          break;
-      }
-
-      // TODO: избавиться от дублирования
-      if (action.payload.sort === 0) {
-        filteredPizzas.sort(
-          (a, b) =>
-            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
-            +(b as any)[resSort as keyof IPizza] -
-            +(a as any)[resSort as keyof IPizza]
-        );
-      }
-
-      if (action.payload.sort === 1) {
-        filteredPizzas.sort(
-          (a, b) =>
-            // Number(a?[resSort as keyof IPizza]:0) - Number(b?[resSort as keyof IPizza]:0) - incorrect
-            +(a as any)[resSort as keyof IPizza] -
-            +(b as any)[resSort as keyof IPizza]
-        );
-      }
-
-      if (action.payload.sort === 2) {
-        filteredPizzas.sort((a, b) => {
-          if (
-            a.title.toLowerCase() <
-            b.title.toLowerCase()
-          ) {
-            return -1;
-          }
-          if (
-            a.title.toLowerCase()>
-            b.title.toLowerCase()
-          ) {
-            return 1;
-          }
-          return 0;
-        });
-      }
-
-      state.pizzas.filteredList = filteredPizzas;
     },
     setIsPizzaListLoaded: (state, action: SetIsPizzaListLoadedAction) => {
       state.pizzas.isLoaded = action.payload;
@@ -200,7 +137,6 @@ export const pizzasSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   get,
-  sort,
   setIsPizzaListLoaded,
   addToBasket,
   increasePizzaCount,
