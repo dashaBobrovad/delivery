@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, FunctionComponent } from "react";
-import { ISortProps } from "./types";
+import { ISortComponent, ISortProps } from "./types";
 
-function SortHOC(Component: FunctionComponent<any>) {
+function SortHOC(Component: FunctionComponent<ISortComponent>) {
   return function SortHOC({
     active,
     searchParams,
