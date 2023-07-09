@@ -1,34 +1,17 @@
 import cx from "classnames";
 
-import { useTypedDispatch } from "data/hooks";
-import { IPizza } from "types";
 import { Icon, Picture } from "components";
-import {
-  decreasePizzaCount,
-  increasePizzaCount,
-  removePizza,
-} from "data/redux/features/pizzas/pizzasSlice";
+
 import s from "./BasketPizza.module.scss";
+import { IBasketPizzaComponent } from "./types";
+import BasketPizzaHOC from "./BasketPizzaHOC";
 
-interface IBasketBlockProps {
-  pizza: IPizza;
-}
-function BasketBlock({ pizza }: IBasketBlockProps) {
-  const dispatch = useTypedDispatch();
-
-  const onIncreasePizzaCount = (id: number) => {
-    dispatch(increasePizzaCount(id));
-  };
-
-  const onDecreasePizzaCount = (id: number) => {
-    dispatch(decreasePizzaCount(id));
-  };
-
-  const onRemovePizza = (id: number) => {
-    console.log("onRemovePizza");
-    dispatch(removePizza(id));
-  };
-
+function BasketPizzaComponent({
+  onIncreasePizzaCount,
+  onDecreasePizzaCount,
+  onRemovePizza,
+  pizza,
+}: IBasketPizzaComponent) {
   return (
     <div className={s.pizza} key={pizza.id}>
       <div className={s.pizza__img}>
@@ -81,4 +64,4 @@ function BasketBlock({ pizza }: IBasketBlockProps) {
   );
 }
 
-export default BasketBlock;
+export default BasketPizzaHOC(BasketPizzaComponent);

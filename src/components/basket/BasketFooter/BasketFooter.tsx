@@ -1,14 +1,15 @@
 import cx from "classnames";
 import { Link } from "react-router-dom";
 
-import { useTypedSelector } from "data/hooks";
 import { Icon } from "components";
 import s from "./BasketFooter.module.scss";
+import BasketFooterHOC from "./BasketFooterHOC";
+import { IBasketFooterComponent } from "./types";
 
-function BasketFooter() {
-  const basketCount = useTypedSelector((state) => state.pizzas.basket.count);
-  const basketSum = useTypedSelector((state) => state.pizzas.basket.sum);
-
+function BasketFooterComponent({
+  basketCount,
+  basketSum,
+}: IBasketFooterComponent) {
   return (
     <div className={s.basketFooter}>
       <div className={s.basketFooter__details}>
@@ -39,4 +40,4 @@ function BasketFooter() {
   );
 }
 
-export default BasketFooter;
+export default BasketFooterHOC(BasketFooterComponent);

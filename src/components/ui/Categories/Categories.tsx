@@ -3,22 +3,10 @@ import cx from "classnames";
 
 import { pizzaCategories } from "data/constants/pizza";
 import s from "./Categories.module.scss";
+import CategoriesHOC from "./CategoriesHOC";
+import { ICategoriesComponent } from "./types";
 
-interface ICategoriesProps {
-  active: number;
-  searchParams: URLSearchParams;
-  setSearchParams: (newParams: URLSearchParams) => void;
-}
-function Categories({
-  active,
-  searchParams,
-  setSearchParams,
-}: ICategoriesProps) {
-  function onActiveClick(index: number) {
-    searchParams.set("category", String(index));
-    setSearchParams(searchParams);
-  }
-
+function CategoriesComponent({ onActiveClick, active }: ICategoriesComponent) {
   return (
     <div className={cx("swipe", s.categories)}>
       <ul className={s.list}>
@@ -41,4 +29,4 @@ function Categories({
   );
 }
 
-export default Categories;
+export default CategoriesHOC(CategoriesComponent);

@@ -1,17 +1,10 @@
 import nextId from "react-id-generator";
-
+import plugArray from "data/constants/plugArray";
 import { BasketPizza, BasketPizzaSkeleton } from "components";
-import { IPizza } from "types";
 import s from "./BasketList.module.scss";
-
-interface IBasketListProps {
-  list: IPizza[];
-  isLoaded: boolean;
-}
+import { IBasketListProps } from "./types";
 
 function BasketList({ list, isLoaded }: IBasketListProps) {
-  const plugArray = Array(5).fill(null);
-
   return (
     <div className={s.cart}>
       <div className="content__basketItems">
