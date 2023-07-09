@@ -1,50 +1,18 @@
-import { useEffect, useRef, useState } from "react";
-
 import nextId from "react-id-generator";
 
 import { sortList } from "data/constants/pizza";
 import { Icon } from "components";
 import s from "./Sort.module.scss";
+import SortHOC from "./SortHOC";
+import { ISortComponent } from "./types";
 
-interface ISortProps {
-  active: number;
-  searchParams: URLSearchParams;
-  setSearchParams: (newParams: URLSearchParams) => void;
-}
-
-function Sort({ active, searchParams, setSearchParams }: ISortProps) {
-  const sortRef = useRef<HTMLInputElement | null>(null);
-
-  console.log(searchParams);
-
-  const [open, setOpen] = useState(false);
-
-  function onActiveClick(index: number) {
-    searchParams.set("sortBy", String(index));
-    setSearchParams(searchParams);
-
-    setOpen(false);
-  }
-
-  function toggleOpen() {
-    setOpen((prev) => !prev);
-  }
-
-  useEffect(() => {
-    const handleClickOutside = (event: Event) => {
-      const path = event.composedPath();
-      if (!path.includes(sortRef.current as HTMLInputElement)) {
-        setOpen(false);
-      }
-    };
-
-    document.body.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.body.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
+function SortComponent({
+  active,
+  open,
+  sortRef,
+  onActiveClick,
+  toggleOpen,
+}: ISortComponent) {
   return (
     <div className={s.sort} ref={sortRef}>
       <div
@@ -80,4 +48,4 @@ function Sort({ active, searchParams, setSearchParams }: ISortProps) {
   );
 }
 
-export default Sort;
+export default SortHOC(SortComponent);
