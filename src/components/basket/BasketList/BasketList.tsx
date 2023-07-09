@@ -2,12 +2,9 @@ import nextId from "react-id-generator";
 import plugArray from "data/constants/plugArray";
 import { BasketPizza, BasketPizzaSkeleton } from "components";
 import s from "./BasketList.module.scss";
-import { IBasketListComponent } from "./types";
+import { IBasketListProps } from "./types";
 
-function BasketList({
-  list,
-  isLoaded
-}: IBasketListComponent) {
+function BasketList({ list, isLoaded }: IBasketListProps) {
   return (
     <div className={s.cart}>
       <div className="content__basketItems">

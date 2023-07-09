@@ -1,66 +1,22 @@
-import { useEffect, useState } from "react";
-
 import nextId from "react-id-generator";
 
 import { Icon, Picture } from "components";
-import { pizzaDoughTypes, pizzaSizes } from "data/constants/pizza";
-import { useTypedDispatch, useTypedSelector } from "data/hooks";
-import { IPizza } from "types";
-import { addToBasket } from "data/redux/features/pizzas/pizzasSlice";
+import { pizzaDoughTypes } from "data/constants/pizza";
+
 import s from "./PizzaBlock.module.scss";
+import { IPizzaBlockComponent } from "./types";
+import PizzaBlockHOC from "./PizzaBlockHOC";
 
-interface IPizzaBlockProps {
-  pizza: IPizza;
-}
-
-function PizzaBlock({ pizza }: IPizzaBlockProps) {
-  const { id, title, imageUrl, types, sizes, price } = pizza;
-
-  const dispatch = useTypedDispatch();
-
-  const basketPizza = useTypedSelector((state) => state.pizzas.basket.list);
-
-  const [pizzaCount, setPizzaCount] = useState<number>(0);
-  const [activeType, setActiveType] = useState(0);
-  const [activeSize, setActiveSize] = useState(0);
-
-  const changeActiveType = (index: number) => {
-    setActiveType(index);
-  };
-
-  const changeActiveSize = (index: number) => {
-    setActiveSize(index);
-  };
-
-  const onAddToBasket = () => {
-    // TODO: заменить на id (?)
-    const item = {
-      id,
-      type: pizzaDoughTypes[activeType] as string,
-      size: pizzaSizes[activeSize] as number,
-    };
-    dispatch(addToBasket(item));
-  };
-
-  useEffect(() => {
-    const basketItemsArr = [] as { id: number }[];
-    Object.keys(basketPizza).map((el: string) =>
-      basketItemsArr.push({
-        ...basketPizza[+el],
-        id: basketPizza[+el].id,
-      })
-    );
-
-    const filteredArr = [] as { id: number }[];
-    basketItemsArr.forEach((item) => item.id === id && filteredArr.push(item));
-
-    const pizzaCount = filteredArr.reduce(
-      (sum, obj: any) => obj.count + sum,
-      0
-    );
-
-    setPizzaCount(pizzaCount);
-  }, [basketPizza, id]);
+function PizzaBlockComponent({
+  pizzaCount,
+  activeType,
+  activeSize,
+  changeActiveType,
+  changeActiveSize,
+  onAddToBasket,
+  pizza,
+}: IPizzaBlockComponent) {
+  const { title, imageUrl, types, sizes, price } = pizza;
 
   return (
     <div className={s.pizza}>
@@ -68,7 +24,7 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
       <h4 className={s.title}>{title}</h4>
       <div className={s.selector}>
         <ul className={s.list}>
-          {types.map((type, index) => (
+          {types.map((type: number, index: number) => (
             <li
               role="tab"
               tabIndex={0}
@@ -116,4 +72,4 @@ function PizzaBlock({ pizza }: IPizzaBlockProps) {
   );
 }
 
-export default PizzaBlock;
+export default PizzaBlockHOC(PizzaBlockComponent);
