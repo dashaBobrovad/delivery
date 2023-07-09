@@ -8,9 +8,9 @@ import { Categories, PizzaBlock, PizzaSkeleton, Sort } from "components";
 import { useSearchParams } from "react-router-dom";
 import { pizzaCategories, sortList } from "data/constants/pizza";
 import { IPizza } from "types";
+import plugArray from "data/constants/plugArray";
 
 function MainPage() {
-  const plugArray = Array(10).fill(null);
   const dispatch = useTypedDispatch();
 
   const [activeFilter, setActiveFilter] = useState(0);
