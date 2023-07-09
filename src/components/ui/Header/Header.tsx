@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 
-import { useTypedSelector } from "data/hooks";
 import { Icon } from "components";
 import s from "./Header.module.scss";
+import { IHeaderComponent } from "./types";
 
-function Header() {
-  const basketCount = useTypedSelector((state) => state.pizzas.basket.count);
-  const basketSum = useTypedSelector((state) => state.pizzas.basket.sum);
-  const isLoaded = useTypedSelector((state) => state.pizzas.basket.isLoaded);
-
+function Header({ basketCount, basketSum, isLoaded }: IHeaderComponent) {
   return (
     <div className={s.header}>
       <div className={`container ${s.container}`}>
