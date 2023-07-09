@@ -1,3 +1,3 @@
-export interface IBasketHeader {
-    onCleanClick: () => void;
+export interface IBasketHeaderComponent {
+  onCleanClick: () => void;
 }

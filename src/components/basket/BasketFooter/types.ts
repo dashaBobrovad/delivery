@@ -1,4 +1,4 @@
-export interface IBasketFooter{
-    basketCount: number;
-    basketSum: number;
-  }
+export interface IBasketFooterComponent {
+  basketCount: number;
+  basketSum: number;
+}

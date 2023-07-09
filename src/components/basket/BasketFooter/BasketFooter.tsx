@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { Icon } from "components";
 import s from "./BasketFooter.module.scss";
 import BasketFooterHOC from "./BasketFooterHOC";
-import { IBasketFooter } from "./types";
+import { IBasketFooterComponent } from "./types";
 
-function BasketFooterComponent({basketCount, basketSum}: IBasketFooter) {
+function BasketFooterComponent({
+  basketCount,
+  basketSum,
+}: IBasketFooterComponent) {
   return (
     <div className={s.basketFooter}>
       <div className={s.basketFooter__details}>

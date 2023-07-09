@@ -1,9 +1,9 @@
 import { useTypedDispatch } from "data/hooks";
 import { cleanBasket } from "data/redux/features/pizzas/pizzasSlice";
 import { FunctionComponent } from "react";
-import { IBasketHeader } from "./types";
+import { IBasketHeaderComponent } from "./types";
 
-function BasketHeaderHOC(Component: FunctionComponent<IBasketHeader>) {
+function BasketHeaderHOC(Component: FunctionComponent<IBasketHeaderComponent>) {
   return function BasketHeaderHOC() {
     const dispatch = useTypedDispatch();
 
@@ -11,7 +11,7 @@ function BasketHeaderHOC(Component: FunctionComponent<IBasketHeader>) {
       dispatch(cleanBasket());
     };
 
-    return <Component onCleanClick={onCleanClick}/>;
+    return <Component onCleanClick={onCleanClick} />;
   };
 }
 

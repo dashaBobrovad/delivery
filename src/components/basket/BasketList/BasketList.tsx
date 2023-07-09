@@ -1,17 +1,15 @@
 import nextId from "react-id-generator";
 
 import { BasketPizza, BasketPizzaSkeleton } from "components";
-import { IPizza } from "types";
 import s from "./BasketList.module.scss";
+import BasketListHOC from "./BasketListHOC";
+import { IBasketListComponent } from "./types";
 
-interface IBasketListProps {
-  list: IPizza[];
-  isLoaded: boolean;
-}
-
-function BasketList({ list, isLoaded }: IBasketListProps) {
-  const plugArray = Array(5).fill(null);
-
+function BasketListComponent({
+  list,
+  isLoaded,
+  plugArray,
+}: IBasketListComponent) {
   return (
     <div className={s.cart}>
       <div className="content__basketItems">
@@ -26,4 +24,4 @@ function BasketList({ list, isLoaded }: IBasketListProps) {
   );
 }
 
-export default BasketList;
+export default BasketListHOC(BasketListComponent);
