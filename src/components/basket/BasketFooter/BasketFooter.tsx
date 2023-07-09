@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "components";
 import s from "./BasketFooter.module.scss";
 import BasketFooterHOC from "./BasketFooterHOC";
-
-interface IBasketFooter{
-  basketCount: number;
-  basketSum: number;
-}
+import { IBasketFooter } from "./types";
 
 function BasketFooterComponent({basketCount, basketSum}: IBasketFooter) {
   return (
@@ -41,5 +37,4 @@ function BasketFooterComponent({basketCount, basketSum}: IBasketFooter) {
   );
 }
 
-const BasketFooter = BasketFooterHOC(BasketFooterComponent);
-export default BasketFooter;
+export default BasketFooterHOC(BasketFooterComponent);

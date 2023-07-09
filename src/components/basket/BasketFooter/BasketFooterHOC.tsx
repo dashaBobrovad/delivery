@@ -1,20 +1,13 @@
-// function BasketFooterHOC = (component) = () => {
-// }
-
 import { useTypedSelector } from "data/hooks";
+import { FunctionComponent } from "react";
+import { IBasketFooter } from "./types";
 
-// export default BasketFooterHOC;
-
-// HOC
-function BasketFooterHOC(C: any) {
-  return function BasketFooterHOC(props: any) {
-    // const [time, setTime] = useState(new Date().toUTCString());
-    // useEffect(() => {
-    //   setTimeout(() => setTime(new Date().toUTCString()), 1000);
-    // });
+function BasketFooterHOC(Component: FunctionComponent<IBasketFooter>) {
+  return function BasketFooterHOC() {
     const basketCount = useTypedSelector((state) => state.pizzas.basket.count);
     const basketSum = useTypedSelector((state) => state.pizzas.basket.sum);
-    return <C {...props} basketCount={basketCount} basketSum={basketSum} {...props}/>;
+
+    return <Component basketCount={basketCount} basketSum={basketSum}/>;
   };
 }
 
