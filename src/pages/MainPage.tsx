@@ -45,44 +45,43 @@ function MainPage() {
       setSearchParams(searchParams);
       sortVal = 0;
     }
+
     setActiveFilter(filterVal);
     setActiveSort(sortVal);
 
-    if (sortVal || filterVal) {
-      let filteredPizzas = [];
+    let filteredPizzas = [] as IPizza[];
 
-      if (filterVal !== 0) {
-        filteredPizzas = pizzas.list.filter(
-          (item) => item.category === filterVal
-        );
-      } else {
-        filteredPizzas = pizzas.list;
-      }
-
-      const sortFn = (a: IPizza, b: IPizza) => {
-        switch (sortVal) {
-          case 0:
-            return b.rating - a.rating;
-          case 1:
-            return a.price - b.price;
-          case 2:
-            if (a.title.toLowerCase() < b.title.toLowerCase()) {
-              return -1;
-            }
-            if (a.title.toLowerCase() > b.title.toLowerCase()) {
-              return 1;
-            }
-            break;
-          default:
-            break;
-        }
-        return 0;
-      };
-
-      filteredPizzas.sort((a, b) => sortFn(a, b));
-
-      setFilteredPizzas(filteredPizzas);
+    if (filterVal) {
+      filteredPizzas = pizzas.list.filter(
+        (item) => item.category === filterVal
+      );
+    } else {
+      filteredPizzas = pizzas.list;
     }
+
+    const sortFn = (a: IPizza, b: IPizza) => {
+      switch (sortVal) {
+        case 0:
+          return b.rating - a.rating;
+        case 1:
+          return a.price - b.price;
+        case 2:
+          if (a.title.toLowerCase() < b.title.toLowerCase()) {
+            return -1;
+          }
+          if (a.title.toLowerCase() > b.title.toLowerCase()) {
+            return 1;
+          }
+          break;
+        default:
+          break;
+      }
+      return 0;
+    };
+
+    filteredPizzas.sort((a, b) => sortFn(a, b));
+
+    setFilteredPizzas(filteredPizzas);
   }, [pizzas.list, searchParams]);
 
   return (

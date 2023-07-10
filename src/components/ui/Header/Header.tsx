@@ -5,7 +5,11 @@ import s from "./Header.module.scss";
 import { IHeaderComponent } from "./types";
 import HeaderHOC from "./HeaderHOC";
 
-function HeaderComponent({ basketCount, basketSum, isLoaded }: IHeaderComponent) {
+function HeaderComponent({
+  basketCount,
+  basketSum,
+  isLoaded,
+}: IHeaderComponent) {
   return (
     <div className={s.header}>
       <div className={`container ${s.container}`}>
