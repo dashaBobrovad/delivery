@@ -1,11 +1,6 @@
 import cx from "classnames";
 import s from "./Icon.module.scss";
-
-interface IIconProps {
-  classNames?: string;
-  icon: string;
-  color?: string;
-}
+import { IIconProps } from "./types";
 
 function Icon({ classNames, icon, color }: IIconProps) {
   return (
