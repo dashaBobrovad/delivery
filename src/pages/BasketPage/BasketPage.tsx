@@ -1,16 +1,17 @@
-import { useTypedSelector } from "data/hooks";
 import {
   BasketEmpty,
   BasketFooter,
   BasketHeader,
   BasketList,
 } from "components";
+import { IBasketPageComponent } from "./types";
+import BasketPageHOC from "./BasketPageHOC";
 
-function BasketPage() {
-  const basketList = useTypedSelector((state) => state.pizzas.basket.list);
-  const isLoaded = useTypedSelector((state) => state.pizzas.basket.isLoaded);
-  const isEmpty = basketList.length === 0;
-
+function BasketPageComponent({
+  basketList,
+  isLoaded,
+  isEmpty,
+}: IBasketPageComponent) {
   return (
     <>
       {isEmpty && <BasketEmpty />}
@@ -25,4 +26,4 @@ function BasketPage() {
   );
 }
 
-export default BasketPage;
+export default BasketPageHOC(BasketPageComponent);
