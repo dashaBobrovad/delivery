@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { Icon } from "components";
 import s from "./Header.module.scss";
 import { IHeaderComponent } from "./types";
+import HeaderHOC from "./HeaderHOC";
 
-function Header({ basketCount, basketSum, isLoaded }: IHeaderComponent) {
+function HeaderComponent({ basketCount, basketSum, isLoaded }: IHeaderComponent) {
   return (
     <div className={s.header}>
       <div className={`container ${s.container}`}>
@@ -28,4 +29,4 @@ function Header({ basketCount, basketSum, isLoaded }: IHeaderComponent) {
   );
 }
 
-export default Header;
+export default HeaderHOC(HeaderComponent);
